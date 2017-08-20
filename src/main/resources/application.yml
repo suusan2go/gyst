@@ -6,6 +6,8 @@ spring:
     username: postgres
     password: password
     url: 'jdbc:postgresql://localhost:5432/postgres'
+    tomcat:
+      connection-properties: "useUnicode=true;characterEncoding=utf-8"
 security:
   oauth2:
     client:
