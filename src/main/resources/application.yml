@@ -8,19 +8,18 @@ spring:
     url: 'jdbc:postgresql://localhost:5432/postgres'
     tomcat:
       connection-properties: "useUnicode=true;characterEncoding=utf-8"
-security:
-  oauth2:
-    client:
-      clientId: ${google.client.id}
-      clientSecret: ${google.client.secret}
-      accessTokenUri: https://www.googleapis.com/oauth2/v4/token
-      userAuthorizationUri: https://accounts.google.com/o/oauth2/v2/auth
-      clientAuthenticationScheme: form
-      scope:
-        - openid
-        - email
-        - profile
-    resource:
-      userInfoUri: https://www.googleapis.com/oauth2/v3/userinfo
-      preferTokenInfo: true
+google:
+  client:
+    clientId: ${google.client.id}
+    clientSecret: ${google.client.secret}
+    accessTokenUri: https://www.googleapis.com/oauth2/v4/token
+    userAuthorizationUri: https://accounts.google.com/o/oauth2/v2/auth
+    clientAuthenticationScheme: form
+    scope:
+      - openid
+      - email
+      - profile
+  resource:
+    userInfoUri: https://www.googleapis.com/oauth2/v3/userinfo
+    preferTokenInfo: true
 
