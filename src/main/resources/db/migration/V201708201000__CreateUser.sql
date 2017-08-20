@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS users(
   id SERIAL PRIMARY KEY,
   name VARCHAR(30) NOT NULL,
-  email VARCHAR(256) NOT NULL,
+  email VARCHAR(256) NOT NULL UNIQUE,
   updated_datetime TIMESTAMP NOT NULL,
   created_datetime TIMESTAMP NOT NULL
 )
