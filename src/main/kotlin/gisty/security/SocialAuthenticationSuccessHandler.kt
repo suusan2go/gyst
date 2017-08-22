@@ -14,6 +14,10 @@ import javax.servlet.http.HttpServletResponse
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler
 import org.springframework.stereotype.Component
 import javax.servlet.http.HttpServletRequest
+import org.springframework.security.web.DefaultRedirectStrategy
+import org.springframework.security.web.RedirectStrategy
+
+
 
 @Component
 class SocialAuthenticationSuccessHandler : AuthenticationSuccessHandler {
@@ -22,18 +26,22 @@ class SocialAuthenticationSuccessHandler : AuthenticationSuccessHandler {
     @Autowired
     lateinit private var socialProfileRepository: SocialProfileRepository
 
+    private val redirectStrategy = DefaultRedirectStrategy()
+
+
     @Throws(IOException::class, ServletException::class)
     override fun onAuthenticationSuccess(req: HttpServletRequest, res: HttpServletResponse, auth: Authentication) {
         val oauth = auth as OAuth2Authentication
         val details = oauth.userAuthentication.details as LinkedHashMap<String, Any>
         val socialProfile = socialProfileRepository.findByUid(details.get("sub") as String)
-        println(details["name"]!!)
-        var user = User(0, details["name"] as String, details["email"] as String)
         if (socialProfile == null) {
+            val user = User(0, details["name"] as String, details["email"] as String)
             userRepository.createUser(user)
             socialProfileRepository.createSocialProfile(SocialProfile(
-                    0, user.id, details["sub"] as String, "google", user.email, details)
+                    0, user.id, details["sub"] as String, "google", details)
             )
         }
+
+        redirectStrategy.sendRedirect(req, res, "/memos")
     }
 }

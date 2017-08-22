@@ -8,11 +8,11 @@ import org.apache.ibatis.annotations.Select
 @Mapper
 interface SocialProfileRepository {
     @Select("""
-        SELECT * FROM social_profiles
+        SELECT id, user_id, uid, provider, auth::text, updated_datetime, created_datetime FROM social_profiles
         where provider = 'google' AND uid = #{uid}
         """
     )
-    fun findByUid(uid: String): SocialProfile;
+    fun findByUid(uid: String): SocialProfile?
 
     @Insert("""
         INSERT INTO social_profiles (user_id, uid, provider, auth, updated_datetime, created_datetime)
