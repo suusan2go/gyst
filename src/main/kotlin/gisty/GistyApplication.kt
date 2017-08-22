@@ -1,5 +1,6 @@
 package gisty
 
+import gisty.security.SocialAuthenticationSuccessHandler
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.autoconfigure.security.oauth2.client.EnableOAuth2Sso
@@ -20,7 +21,8 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean
 import org.springframework.context.annotation.Primary
 import org.springframework.security.oauth2.client.filter.OAuth2ClientContextFilter
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter
-
+import org.springframework.web.bind.annotation.RequestMapping
+import java.security.Principal
 
 
 @SpringBootApplication
@@ -29,6 +31,13 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 class GistyApplication: WebSecurityConfigurerAdapter() {
     @Autowired
     lateinit var oauth2ClientContext: OAuth2ClientContext
+    @Autowired
+    lateinit var socialAuthenticationSuccessHandler: SocialAuthenticationSuccessHandler
+
+    @RequestMapping("/user")
+    fun user(principal: Principal): Principal {
+        return principal
+    }
 
     @Throws(Exception::class)
     override fun configure(http: HttpSecurity) {
@@ -47,9 +56,10 @@ class GistyApplication: WebSecurityConfigurerAdapter() {
         val googleFilter = OAuth2ClientAuthenticationProcessingFilter("/login/google")
         val googleTemplate = OAuth2RestTemplate(google(), oauth2ClientContext)
         googleFilter.setRestTemplate(googleTemplate)
-        val tokenServices = UserInfoTokenServices(googleResource().getUserInfoUri(), google().getClientId())
+        val tokenServices = UserInfoTokenServices(googleResource().userInfoUri, google().clientId)
         tokenServices.setRestTemplate(googleTemplate)
         googleFilter.setTokenServices(tokenServices)
+        googleFilter.setAuthenticationSuccessHandler(socialAuthenticationSuccessHandler)
         return googleFilter
     }
 
