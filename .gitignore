@@ -23,6 +23,7 @@ hs_err_pid*
 
 # intellij
 .idea
+gisty.iml
 
 # maven
 /target/
