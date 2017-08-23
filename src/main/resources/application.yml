@@ -8,6 +8,9 @@ spring:
     url: 'jdbc:postgresql://localhost:5432/postgres'
     tomcat:
       connection-properties: "useUnicode=true;characterEncoding=utf-8"
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
 google:
   client:
     clientId: ${google.client.id}
