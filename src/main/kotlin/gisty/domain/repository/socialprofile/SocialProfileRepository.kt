@@ -9,15 +9,15 @@ import org.apache.ibatis.annotations.Select
 interface SocialProfileRepository {
     @Select("""
         SELECT id, user_id, uid, provider, auth::text, updated_datetime, created_datetime FROM social_profiles
-        where provider = 'google' AND uid = #{uid}
+        WHERE provider = #{provider} AND uid = #{uid}
         """
     )
-    fun findByUid(uid: String): SocialProfile?
+    fun findByUidAndProvider(provider: String, uid: String): SocialProfile?
 
     @Insert("""
         INSERT INTO social_profiles (user_id, uid, provider, auth, updated_datetime, created_datetime)
-        VALUES(#{userId}, #{uid}, 'google', to_json(#{auth}::json), #{updatedDatetime},#{createdDatetime})
+        VALUES(#{userId}, #{uid}, #{provider}, to_json(#{auth}::json), #{updatedDatetime}, #{createdDatetime})
         """
     )
-    fun createSocialProfile(socialProfile: SocialProfile);
+    fun createSocialProfile(socialProfile: SocialProfile)
 }

@@ -1,5 +1,9 @@
 package gisty
 
+import gisty.domain.model.User
+import gisty.domain.repository.socialprofile.SocialProfileRepository
+import gisty.domain.repository.user.UserRepository
+import gisty.security.GooglePrincipalExtractor
 import gisty.security.SocialAuthenticationSuccessHandler
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
@@ -19,10 +23,10 @@ import org.springframework.security.oauth2.client.OAuth2ClientContext
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.web.servlet.FilterRegistrationBean
 import org.springframework.context.annotation.Primary
+import org.springframework.security.core.annotation.AuthenticationPrincipal
 import org.springframework.security.oauth2.client.filter.OAuth2ClientContextFilter
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter
 import org.springframework.web.bind.annotation.RequestMapping
-import java.security.Principal
 
 
 @SpringBootApplication
@@ -33,9 +37,15 @@ class GistyApplication: WebSecurityConfigurerAdapter() {
     lateinit var oauth2ClientContext: OAuth2ClientContext
     @Autowired
     lateinit var socialAuthenticationSuccessHandler: SocialAuthenticationSuccessHandler
+    @Autowired
+    lateinit private var userRepository: UserRepository
+    @Autowired
+    lateinit private var socialProfileRepository: SocialProfileRepository
+
 
     @RequestMapping("/user")
-    fun user(principal: Principal): Principal {
+    fun user(@AuthenticationPrincipal principal: User): User {
+        print(principal)
         return principal
     }
 
@@ -57,6 +67,7 @@ class GistyApplication: WebSecurityConfigurerAdapter() {
         val googleTemplate = OAuth2RestTemplate(google(), oauth2ClientContext)
         googleFilter.setRestTemplate(googleTemplate)
         val tokenServices = UserInfoTokenServices(googleResource().userInfoUri, google().clientId)
+        tokenServices.setPrincipalExtractor(GooglePrincipalExtractor(userRepository, socialProfileRepository))
         tokenServices.setRestTemplate(googleTemplate)
         googleFilter.setTokenServices(tokenServices)
         googleFilter.setAuthenticationSuccessHandler(socialAuthenticationSuccessHandler)
@@ -84,6 +95,7 @@ class GistyApplication: WebSecurityConfigurerAdapter() {
         registration.order = -100
         return registration
     }
+
 }
 
 fun main(args: Array<String>) {

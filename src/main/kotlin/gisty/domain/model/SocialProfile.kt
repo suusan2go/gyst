@@ -12,7 +12,7 @@ class SocialProfile {
     lateinit var updatedDatetime: LocalDateTime
     lateinit var createdDatetime: LocalDateTime
 
-    constructor(id: Int, userId: Int, uid: String, provider: String, auth: LinkedHashMap<String, Any>) {
+    constructor(id: Int, userId: Int, uid: String, provider: String, auth: Map<String, Any>) {
         this.id = id
         this.userId = userId
         this.uid = uid
