@@ -40,12 +40,6 @@ class GistyApplication: WebSecurityConfigurerAdapter() {
     @Autowired
     lateinit private var googlePrincipalExtractor: GooglePrincipalExtractor
 
-
-    @RequestMapping("/user")
-    fun user(@AuthenticationPrincipal principal: User): User {
-        return principal
-    }
-
     @Throws(Exception::class)
     override fun configure(http: HttpSecurity) {
         http
