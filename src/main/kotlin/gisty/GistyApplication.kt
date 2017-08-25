@@ -1,8 +1,5 @@
 package gisty
 
-import gisty.domain.model.User
-import gisty.domain.repository.socialprofile.SocialProfileRepository
-import gisty.domain.repository.user.UserRepository
 import gisty.security.GooglePrincipalExtractor
 import gisty.security.SocialAuthenticationSuccessHandler
 import org.springframework.boot.SpringApplication
@@ -23,10 +20,8 @@ import org.springframework.security.oauth2.client.OAuth2ClientContext
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.web.servlet.FilterRegistrationBean
 import org.springframework.context.annotation.Primary
-import org.springframework.security.core.annotation.AuthenticationPrincipal
 import org.springframework.security.oauth2.client.filter.OAuth2ClientContextFilter
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter
-import org.springframework.web.bind.annotation.RequestMapping
 
 
 @SpringBootApplication
