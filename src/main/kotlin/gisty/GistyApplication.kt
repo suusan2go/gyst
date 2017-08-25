@@ -38,14 +38,11 @@ class GistyApplication: WebSecurityConfigurerAdapter() {
     @Autowired
     lateinit var socialAuthenticationSuccessHandler: SocialAuthenticationSuccessHandler
     @Autowired
-    lateinit private var userRepository: UserRepository
-    @Autowired
-    lateinit private var socialProfileRepository: SocialProfileRepository
+    lateinit private var googlePrincipalExtractor: GooglePrincipalExtractor
 
 
     @RequestMapping("/user")
     fun user(@AuthenticationPrincipal principal: User): User {
-        print(principal)
         return principal
     }
 
@@ -67,7 +64,7 @@ class GistyApplication: WebSecurityConfigurerAdapter() {
         val googleTemplate = OAuth2RestTemplate(google(), oauth2ClientContext)
         googleFilter.setRestTemplate(googleTemplate)
         val tokenServices = UserInfoTokenServices(googleResource().userInfoUri, google().clientId)
-        tokenServices.setPrincipalExtractor(GooglePrincipalExtractor(userRepository, socialProfileRepository))
+        tokenServices.setPrincipalExtractor(googlePrincipalExtractor)
         tokenServices.setRestTemplate(googleTemplate)
         googleFilter.setTokenServices(tokenServices)
         googleFilter.setAuthenticationSuccessHandler(socialAuthenticationSuccessHandler)
