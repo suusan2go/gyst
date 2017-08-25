@@ -3,14 +3,12 @@ package gisty.domain.model
 import com.fasterxml.jackson.databind.ObjectMapper
 import java.time.LocalDateTime
 
-class SocialProfile {
+class SocialProfile: Entity {
     var id: Int = 0
     var userId: Int = 0
     lateinit var uid: String
     lateinit var provider: String
     lateinit var auth: String
-    lateinit var updatedDatetime: LocalDateTime
-    lateinit var createdDatetime: LocalDateTime
 
     constructor(id: Int, userId: Int, uid: String, provider: String, auth: Map<String, Any>) {
         this.id = id

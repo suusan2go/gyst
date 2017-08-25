@@ -4,5 +4,5 @@ CREATE TABLE IF NOT EXISTS documents(
   title VARCHAR(128) NOT NULL,
   body text NOT NULL,
   updated_datetime TIMESTAMP NOT NULL,
-  created_datetime TIMESTAMP NOT NULL,
+  created_datetime TIMESTAMP NOT NULL
 )

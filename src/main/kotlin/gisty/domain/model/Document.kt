@@ -2,15 +2,16 @@ package gisty.domain.model
 
 import java.time.LocalDateTime
 
-class User: Entity {
+class Document: Entity {
     var id: Int = 0
-    lateinit var name: String
-    lateinit var email: String
+    var userId: Int = 0
+    lateinit var title: String
+    lateinit var body: String
 
-    constructor(id: Int, name: String, email: String) {
+    constructor(id: Int, name: String, body: String): this() {
         this.id = id
-        this.name = name
-        this.email = email
+        this.title = title
+        this.body = body
         this.updatedDatetime = LocalDateTime.now()
         this.createdDatetime = LocalDateTime.now()
     }

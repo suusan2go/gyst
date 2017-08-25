@@ -12,7 +12,7 @@ interface SocialProfileRepository {
         WHERE provider = #{provider} AND uid = #{uid}
         """
     )
-    fun findByUidAndProvider(provider: String, uid: String): SocialProfile?
+    fun findByUidAndProvider(uid: String, provider: String): SocialProfile?
 
     @Insert("""
         INSERT INTO social_profiles (user_id, uid, provider, auth, updated_datetime, created_datetime)

@@ -30,8 +30,9 @@ open class OAuthPrincipalExtractor @Autowired constructor(
         if (user == null) {
             LOGGER.info("No user found, generating profile for {}", uid)
             user = User(0, name, email)
+            userRepository.createUser(user)
         }
-        val socialProfile = socialProfileRepository.findByUidAndProvider(provider = provider, uid = uid)
+        val socialProfile = socialProfileRepository.findByUidAndProvider(uid = uid, provider = provider)
         if (socialProfile == null) {
             LOGGER.info("No social profile found, generating profile for {}", uid)
             socialProfileRepository.createSocialProfile(SocialProfile(0, user.id, uid, provider, map))

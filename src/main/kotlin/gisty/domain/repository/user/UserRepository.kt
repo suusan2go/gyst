@@ -17,7 +17,7 @@ interface UserRepository {
 
     @Select("""
         SELECT users.* FROM users
-        OIN social_profiles ON social_profiles.user_id =  users.id
+        JOIN social_profiles ON social_profiles.user_id = users.id
         WHERE provider = #{provider} AND uid = #{uid}
         """
     )
