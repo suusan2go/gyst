@@ -1,6 +1,7 @@
 package gisty.app.controller.document
 
 import gisty.app.controller.ApiController
+import gisty.app.exception.NotFoundException
 import gisty.domain.model.Document
 import gisty.domain.model.User
 import gisty.domain.service.document.UserDocumentService
@@ -21,6 +22,7 @@ class DocumentsController(@Autowired userDocumentService: UserDocumentService ):
 
     @GetMapping("/documents/{id}")
     fun document(@AuthenticationPrincipal principal: User, @PathVariable("id") documentId: Int ): Document {
-        return userDocumentService.findUserDocument(principal, documentId)
+        return userDocumentService.findUserDocument(principal, documentId) ?:
+                throw NotFoundException("User has no documents with id $documentId")
     }
 }
