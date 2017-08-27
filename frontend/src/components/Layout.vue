@@ -1,7 +1,11 @@
 <template>
   <div>
-    <header>
-      <el-menu theme="light" :default-active="activeIndex" class="el-menu-demo" mode="horizontal" @select="handleSelect">
+    <header class="header">
+      <router-link :to="{ name: 'Root' }" class="header-logo">
+        <icon name="file-text" scale="1.5"></icon>
+        Gisty
+      </router-link>
+      <el-menu theme="light" :default-active="activeIndex" class="" mode="horizontal" @select="handleSelect">
         <el-menu-item index="1">Processing Center</el-menu-item>
         <el-submenu index="2">
           <template slot="title">Workspace</template>
@@ -27,4 +31,19 @@ export default {
 </script>
 
 <style>
+.header {
+  align-items: center;
+  background-color: #eef1f6;
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 20px;
+}
+
+.header-logo {
+  font-size: 21px;
+  margin: 0;
+  margin-right: auto;
+  text-decoration: none;
+  background-color: transparent;
+}
 </style>
