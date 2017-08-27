@@ -2,18 +2,16 @@
   <div>
     <header class="header">
       <router-link :to="{ name: 'Root' }" class="header-logo">
-        <icon name="file-text" scale="1.5"></icon>
+        <icon name="file-text-o" scale="1.5" color="black"></icon>
         Gisty
       </router-link>
-      <el-menu theme="light" :default-active="activeIndex" class="" mode="horizontal" @select="handleSelect">
-        <el-menu-item index="1">Processing Center</el-menu-item>
-        <el-submenu index="2">
-          <template slot="title">Workspace</template>
-          <el-menu-item index="2-1">item one</el-menu-item>
-          <el-menu-item index="2-2">item two</el-menu-item>
-          <el-menu-item index="2-3">item three</el-menu-item>
-        </el-submenu>
-        <el-menu-item index="3"><a href="https://www.ele.me" target="_blank">Orders</a></el-menu-item>
+      <el-menu theme="light" :default-active="activeIndex" router="true" mode="horizontal" @select="handleSelect">
+        <el-menu-item>
+          <a href="/login/google">
+            <icon name="google"></icon>
+            Login
+          </a>
+        </el-menu-item>
       </el-menu>
     </header>
     <slot></slot>
@@ -31,6 +29,10 @@ export default {
 </script>
 
 <style>
+a {
+  text-decoration: none;
+}
+
 .header {
   align-items: center;
   background-color: #eef1f6;
@@ -40,10 +42,12 @@ export default {
 }
 
 .header-logo {
-  font-size: 21px;
+  align-self: center;
+  background-color: transparent;
+  color: black;
+  font-size: 32px;
   margin: 0;
   margin-right: auto;
   text-decoration: none;
-  background-color: transparent;
 }
 </style>
