@@ -25,6 +25,6 @@ class SocialAuthenticationSuccessHandler : AuthenticationSuccessHandler {
 
     @Throws(IOException::class, ServletException::class)
     override fun onAuthenticationSuccess(req: HttpServletRequest, res: HttpServletResponse, auth: Authentication) {
-        redirectStrategy.sendRedirect(req, res, "/memos")
+        redirectStrategy.sendRedirect(req, res, "/documents")
     }
 }
