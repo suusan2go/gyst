@@ -1,5 +1,5 @@
 <template>
-  <layout>
+  <documents-layout>
     <div class="jumbotron">
       <div class="container">
         <h1 class="display-3">Hello, world!</h1>
@@ -11,20 +11,20 @@
         </p>
       </div>
     </div>
-  </layout>
+  </documents-layout>
 </template>
 
 <script>
-import Layout from '@/components/Layout';
+import DocumentsLayout from '@/components/DocumentsLayout';
 
 export default {
   name: 'hello',
   components: {
-    Layout,
+    DocumentsLayout,
   },
   data() {
     return {
-      msg: 'Welcome to Your Vue.js App',
+      msg: 'Documents',
     };
   },
 };
