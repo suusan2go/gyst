@@ -14,6 +14,11 @@ export default {
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Yu Gothic", YuGothic, "ヒラギノ角ゴ ProN W3", Hiragino Kaku Gothic ProN, Arial, "メイリオ", Meiryo, sans-serif;
 }
+
+ol, ul {
+	list-style: none;
+}
+
 .container {
   padding: 0 20px;
 }
