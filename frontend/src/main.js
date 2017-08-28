@@ -5,7 +5,7 @@ import ElementUI from 'element-ui';
 import Icon from 'vue-awesome/components/Icon';
 import 'vue-awesome/icons';
 import 'normalize.css';
-import 'element-ui/lib/theme-default/index.css';
+import '@/assets/element-custom-theme/index.css';
 
 import App from './App';
 import router from './router';

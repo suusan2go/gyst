@@ -31,7 +31,7 @@ export default {
 <style scoped>
 .header {
   align-items: center;
-  background-color: #eef1f6;
+  background-color: #4fba83;
   display: flex;
   justify-content: flex-end;
   padding: 0 20px;

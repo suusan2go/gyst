@@ -1,10 +1,9 @@
 <template>
   <documents-layout>
-    <div class="jumbotron">
+    <div class="document-container">
       <div class="container">
-        <h1 class="display-3">{{document.title}}</h1>
+        <h1 class="display-3">{{document.title}} <small>#{{$route.params.id}}</small></h1>
         <hr class="my-4">
-        <p>{{msg}}</p>
         <p class="lead" v-html="document.body">
           {{document.body}}
         </p>
@@ -34,4 +33,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.document-container {
+  padding: 20px
+}
 </style>

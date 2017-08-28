@@ -1,8 +1,8 @@
 <template>
   <div>
     <header class="header">
-      <router-link :to="{ name: 'Root' }" class="header-logo">
-        <icon name="file-text-o" scale="1.5" color="black"></icon>
+      <router-link :to="{ name: 'Documents' }" class="header-logo">
+        <icon name="file-text" scale="1.5" color=""></icon>
         Gisty
       </router-link>
       <el-menu theme="light" :default-active="activeIndex" router="true" mode="horizontal" @select="handleSelect">
@@ -45,13 +45,23 @@ a {
 
 .header {
   align-items: center;
-  background-color: #eef1f6;
+  border-bottom: 2px solid #4fba83;
+  background-color: white;
   display: flex;
   justify-content: flex-end;
   padding: 0 20px;
 }
 
+.el-menu {
+  background-color: transparent;
+}
+
+.el-menu--horizontal .el-menu-item:hover, .el-menu--horizontal .el-submenu__title:hover {
+  background-color: transparent;
+}
+
 aside {
+  background-color: rgb(238, 246, 244);
   border-right: 1px solid rgba(0,0,0,.07);
   height: 100%;
   left: 0;
@@ -61,6 +71,7 @@ aside {
   padding: 0 0 100px;
   pointer-events: auto;
   position: fixed;
+  top: 62px;
   transition: .3s cubic-bezier(.25,.8,.25,1);
   width: 300px;
   will-change: transform;
@@ -68,13 +79,14 @@ aside {
 }
 
 main {
+  margin-top: -21px;
   padding-left: 300px;
 }
 
 .header-logo {
   align-self: center;
   background-color: transparent;
-  color: black;
+  color: #4fba83;
   font-size: 32px;
   margin: 0;
   margin-right: auto;

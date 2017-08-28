@@ -36,7 +36,7 @@
   text-overflow: ellipsis;
 }
 .document-item-container:hover {
-  background: #eee;
+  background-color: rgb(209, 229, 221);
 }
 .document-title {
   font-size: 18px;
