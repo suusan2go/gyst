@@ -28,11 +28,7 @@ export default {
 };
 </script>
 
-<style>
-a {
-  text-decoration: none;
-}
-
+<style scoped>
 .header {
   align-items: center;
   background-color: #eef1f6;
