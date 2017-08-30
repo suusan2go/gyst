@@ -30,7 +30,8 @@
 .document-item-container {
   box-sizing: border-box;
   min-width: 0;
-  padding-left: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
   text-overflow: ellipsis;
@@ -40,7 +41,10 @@
 }
 .document-title {
   font-size: 18px;
-  margin-top: 10px
+  margin-top: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .document-body {
   font-size: 14px;
