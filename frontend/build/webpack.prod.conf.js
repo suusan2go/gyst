@@ -8,6 +8,7 @@ var CopyWebpackPlugin = require('copy-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+var FlowBabelWebpackPlugin = require('flow-babel-webpack-plugin');
 
 var env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
@@ -37,6 +38,7 @@ var webpackConfig = merge(baseWebpackConfig, {
       },
       sourceMap: true
     }),
+    new FlowBabelWebpackPlugin(),
     // extract css into its own file
     new ExtractTextPlugin({
       filename: utils.assetsPath('css/[name].[contenthash].css')
