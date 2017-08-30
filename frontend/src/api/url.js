@@ -1,3 +1,3 @@
 /* @flow */
-export const memosUrl = () => '/api/memos';
-export const memoUrl = (id: number) => `/api/memos/${id}`;
+export const documentsUrl = () => '/api/documents';
+export const documentUrl = (id: number) => `/api/documents/${id}`;

@@ -50,6 +50,10 @@
 </style>
 
 <script>
+import ApiClient from '@/api';
+
+const client = new ApiClient();
+
 export default {
   data() {
     return {
@@ -61,82 +65,9 @@ export default {
     this.fetchData();
   },
   methods: {
-    fetchData() {
-      setTimeout(() => {
-        this.loading = true;
-        this.documents = [
-          {
-            id: 1,
-            title: '職務経歴書',
-            body: 'わたしががががががががががが',
-          },
-          {
-            id: 2,
-            title: '職務経歴書',
-            body: 'わたしががががががががががが',
-          },
-          {
-            id: 1,
-            title: '職務経歴書',
-            body: 'わたしががががががががががが',
-          },
-          {
-            id: 2,
-            title: '職務経歴書',
-            body: 'わたしががががががががががが',
-          },
-          {
-            id: 1,
-            title: '職務経歴書',
-            body: 'わたしががががががががががが',
-          },
-          {
-            id: 2,
-            title: '職務経歴書',
-            body: 'わたしががががががががががが',
-          },
-          {
-            id: 1,
-            title: '職務経歴書',
-            body: 'わたしががががががががががが',
-          },
-          {
-            id: 2,
-            title: '職務経歴書',
-            body: 'わたしががががががががががが',
-          },
-          {
-            id: 1,
-            title: '職務経歴書',
-            body: 'わたしががががががががががが',
-          },
-          {
-            id: 2,
-            title: '職務経歴書',
-            body: 'わたしががががががががががが',
-          },
-          {
-            id: 1,
-            title: '職務経歴書',
-            body: 'わたしががががががががががが',
-          },
-          {
-            id: 2,
-            title: '職務経歴書',
-            body: 'わたしががががががががががが',
-          },
-          {
-            id: 1,
-            title: '職務経歴書',
-            body: 'わたしががががががががががが',
-          },
-          {
-            id: 2,
-            title: '職務経歴書',
-            body: 'わたしががががががががががが',
-          },
-        ];
-      }, 1000);
+    async fetchData() {
+      this.loading = true;
+      this.documents = await client.getDocuments();
     },
   },
 };

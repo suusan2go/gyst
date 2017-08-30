@@ -2,7 +2,7 @@
   <documents-layout>
     <div class="document-container">
       <div class="container">
-        <h1 class="display-3">{{document.title}} <small>#{{$route.params.id}}</small></h1>
+        <h1 class="display-3">{{document.title}} <small>#{{document.id}}</small></h1>
         <hr class="my-4">
         <p class="lead" v-html="document.body">
           {{document.body}}
@@ -14,11 +14,17 @@
 
 <script>
 import DocumentsLayout from '@/components/DocumentsLayout';
+import ApiClient from '@/api';
+
+const client = new ApiClient();
 
 export default {
   name: 'hello',
   components: {
     DocumentsLayout,
+  },
+  created() {
+    this.fetchData();
   },
   data() {
     return {
@@ -27,6 +33,17 @@ export default {
         body: 'ほげほげほげががががが<br>はおががががが',
       },
     };
+  },
+  methods: {
+    async fetchData() {
+      this.document = await client.getDocument(this.$route.params.id);
+    },
+  },
+  watch: {
+    async $route(to) {
+      console.log(to);
+      this.document = await client.getDocument(this.$route.params.id);
+    },
   },
 };
 </script>

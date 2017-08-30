@@ -1,11 +1,12 @@
 /* @flow */
 import axios from 'axios';
+import type { Axios } from 'axios';
 import * as urlHelpers from './url';
 
 export default class ApiClient {
-  sessionToken: ?string;
-  constructor(sessionToken: ?string) {
-    this.sessionToken = sessionToken;
+  axiosClient: Axios;
+
+  constructor() {
     this.axiosClient = axios.create({
       withCredentials: true,
     });
@@ -15,8 +16,13 @@ export default class ApiClient {
     );
   }
 
-  async getMemos() {
-    const response: Response = await this.get(urlHelpers.memosUrl());
+  async getDocuments() {
+    const response: Response = await this.get(urlHelpers.documentsUrl());
+    return response;
+  }
+
+  async getDocument(id: number) {
+    const response: Response = await this.get(urlHelpers.documentUrl(id));
     return response;
   }
 
