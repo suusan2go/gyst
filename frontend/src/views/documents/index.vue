@@ -1,6 +1,6 @@
 <template>
   <documents-layout>
-    <div class="jumbotron">
+    <div class="jumbotron" slot="default" v-if="showDefault">
       <div class="container">
         <h1 class="display-3">Hello, world!</h1>
         <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
@@ -19,6 +19,12 @@ import DocumentsLayout from '@/components/DocumentsLayout';
 
 export default {
   name: 'hello',
+  props: {
+    showDefault: {
+      type: Boolean,
+      default: false,
+    },
+  },
   components: {
     DocumentsLayout,
   },

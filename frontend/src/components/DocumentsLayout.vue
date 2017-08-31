@@ -14,11 +14,19 @@
         </el-menu-item>
       </el-menu>
     </header>
-    <main>
-      <aside>
-        <documents-list></documents-list>
-      </aside>
-      <slot></slot>
+    <main v-bind:class='{ "layout-sidemenu": showAside }'>
+      <transition name="slide-fade">
+        <aside v-if="showAside">
+          <documents-list></documents-list>
+        </aside>
+      </transition>
+      <slot name="default"></slot>
+      <router-view>
+      </router-view>
+      <router-link :to="{ name: 'DocumentsNew' }" class="header-logo">
+        <el-button type="primary" icon="edit" size="large" class="btn-circle">
+        </el-button>
+      </router-link>
     </main>
   </div>
 </template>
@@ -27,6 +35,12 @@
 import DocumentsList from './DocumentsList';
 
 export default {
+  props: {
+    showAside: {
+      type: Boolean,
+      default: true,
+    },
+  },
   components: {
     DocumentsList,
   },
@@ -41,6 +55,18 @@ export default {
 <style scoped>
 a {
   text-decoration: none;
+}
+
+.btn-circle {
+  width: 60px;
+  height: 60px;
+  padding: 10px 16px;
+  font-size: 24px;
+  line-height: 1.33;
+  border-radius: 30px;
+  position: absolute;
+  bottom: 20px;
+  right: 30px;
 }
 
 .header {
@@ -78,7 +104,7 @@ aside {
   z-index: 3;
 }
 
-main {
+.layout-sidemenu {
   margin-top: -21px;
   padding-left: 300px;
 }
@@ -91,5 +117,18 @@ main {
   margin: 0;
   margin-right: auto;
   text-decoration: none;
+}
+
+/* enter、 leave アニメーションで異なる間隔やタイミング関数を利用することができます */
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active below version 2.1.8 */ {
+  transform: translateX(10px);
+  opacity: 0;
 }
 </style>

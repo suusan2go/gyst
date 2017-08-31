@@ -1,15 +1,13 @@
 <template>
-  <documents-layout>
-    <div class="document-container">
-      <div class="container">
-        <h1 class="display-3">{{document.title}} <small>#{{document.id}}</small></h1>
-        <hr class="my-4">
-        <p class="lead" v-html="document.body">
-          {{document.body}}
-        </p>
-      </div>
+  <div class="document-container">
+    <div class="container">
+      <h1 class="display-3">{{document.title}} <small>#{{document.id}}</small></h1>
+      <hr class="my-4">
+      <p class="lead" v-html="document.body">
+        {{document.body}}
+      </p>
     </div>
-  </documents-layout>
+  </div>
 </template>
 
 <script>
@@ -20,6 +18,7 @@ const client = new ApiClient();
 
 export default {
   name: 'hello',
+  props: ['id'],
   components: {
     DocumentsLayout,
   },
@@ -36,7 +35,7 @@ export default {
   },
   methods: {
     async fetchData() {
-      this.document = await client.getDocument(this.$route.params.id);
+      this.document = await client.getDocument(this.props.id);
     },
   },
   watch: {
