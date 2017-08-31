@@ -13,17 +13,18 @@
 </template>
 
 <script>
-import DocumentsLayout from '@/components/DocumentsLayout';
-
 export default {
   name: 'hello',
-  components: {
-    DocumentsLayout,
-  },
   data() {
     return {
       msg: 'Documents',
     };
+  },
+  created() {
+    this.$emit('hideSidemenu');
+  },
+  beforeDestroy() {
+    this.$emit('showSidemenu');
   },
 };
 </script>

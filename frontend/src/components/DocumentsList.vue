@@ -1,5 +1,5 @@
 <template>
-  <div class="documents-list-container">
+  <div class="documents-list-container" v-loading="loading">
     <ul class="documents-list">
       <li class="document-item" v-for="document in documents">
         <router-link :to="{ name: 'DocumentsOne', params: { id: document.id }}" class="document-item-link">
@@ -72,6 +72,7 @@ export default {
     async fetchData() {
       this.loading = true;
       this.documents = await client.getDocuments();
+      this.loading = false;
     },
   },
 };

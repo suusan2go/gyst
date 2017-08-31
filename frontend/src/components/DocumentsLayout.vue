@@ -1,7 +1,7 @@
 <template>
   <div>
     <header class="header">
-      <router-link :to="{ name: 'Documents' }" class="header-logo">
+      <router-link :to="{ name: 'DocumentsIndex' }" class="header-logo">
         <icon name="file-text" scale="1.5" color=""></icon>
         Gisty
       </router-link>
@@ -14,14 +14,13 @@
         </el-menu-item>
       </el-menu>
     </header>
-    <main v-bind:class='{ "layout-sidemenu": showAside }'>
+    <main class="sidemenu" v-bind:class='{ "layout-sidemenu": showAside }'>
       <transition name="slide-fade">
         <aside v-if="showAside">
           <documents-list></documents-list>
         </aside>
       </transition>
-      <slot name="default"></slot>
-      <router-view>
+      <router-view @hideSidemenu="hideSidemenu()" @showSidemenu="showSidemenu()">
       </router-view>
       <router-link :to="{ name: 'DocumentsNew' }" class="header-logo">
         <el-button type="primary" icon="edit" size="large" class="btn-circle">
@@ -35,19 +34,22 @@
 import DocumentsList from './DocumentsList';
 
 export default {
-  props: {
-    showAside: {
-      type: Boolean,
-      default: true,
-    },
-  },
   components: {
     DocumentsList,
   },
   data() {
     return {
       msg: 'Welcome to Your Vue.js App',
+      showAside: true,
     };
+  },
+  methods: {
+    hideSidemenu() {
+      this.showAside = false;
+    },
+    showSidemenu() {
+      this.showAside = true;
+    },
   },
 };
 </script>
@@ -104,9 +106,14 @@ aside {
   z-index: 3;
 }
 
-.layout-sidemenu {
+.layout {
   margin-top: -21px;
+  transition: all .3s ease;
+}
+
+.layout-sidemenu {
   padding-left: 300px;
+  transition: all .3s ease;
 }
 
 .header-logo {
@@ -124,7 +131,7 @@ aside {
   transition: all .3s ease;
 }
 .slide-fade-leave-active {
-  transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  transition: all .3s ease;
 }
 .slide-fade-enter, .slide-fade-leave-to
 /* .slide-fade-leave-active below version 2.1.8 */ {

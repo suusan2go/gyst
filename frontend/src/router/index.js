@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Root from '@/views/root/index';
+import DocumentsLayout from '@/components/DocumentsLayout';
 import DocumentsIndex from '@/views/documents/index';
 import DocumentsOne from '@/views/documents/one';
 import DocumentsNew from '@/views/documents/new';
@@ -17,21 +18,25 @@ export default new Router({
     {
       path: '/documents',
       name: 'Documents',
-      component: DocumentsIndex,
-      props: {
-        showDefault: true,
+      component: DocumentsLayout,
+      props: (route) => {
+        route.path.indexOf(['new']);
       },
       children: [
         {
-          path: '/documents/:id',
+          path: '',
+          name: 'DocumentsIndex',
+          component: DocumentsIndex,
+        },
+        {
+          path: ':id',
           name: 'DocumentsOne',
           component: DocumentsOne,
         },
         {
-          path: '/documents/new',
+          path: 'new',
           name: 'DocumentsNew',
           component: DocumentsNew,
-          props: { showAside: false },
         },
       ],
     },

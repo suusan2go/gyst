@@ -1,5 +1,5 @@
 <template>
-  <div class="document-container">
+  <div class="document-container" v-loading="loading">
     <div class="container">
       <h1 class="display-3">{{document.title}} <small>#{{document.id}}</small></h1>
       <hr class="my-4">
@@ -31,17 +31,21 @@ export default {
         title: '職務経歴書',
         body: 'ほげほげほげががががが<br>はおががががが',
       },
+      loading: false,
     };
   },
   methods: {
     async fetchData() {
-      this.document = await client.getDocument(this.props.id);
+      this.loading = true;
+      this.document = await client.getDocument(this.$route.params.id);
+      setTimeout(() => {
+        this.loading = false;
+      }, 300);
     },
   },
   watch: {
-    async $route(to) {
-      console.log(to);
-      this.document = await client.getDocument(this.$route.params.id);
+    async $route() {
+      this.fetchData();
     },
   },
 };
