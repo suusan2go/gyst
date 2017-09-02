@@ -29,14 +29,14 @@ export default new Router({
           component: DocumentsIndex,
         },
         {
-          path: ':id',
-          name: 'DocumentsOne',
-          component: DocumentsOne,
-        },
-        {
           path: 'new',
           name: 'DocumentsNew',
           component: DocumentsNew,
+        },
+        {
+          path: ':id',
+          name: 'DocumentsOne',
+          component: DocumentsOne,
         },
       ],
     },

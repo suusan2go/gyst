@@ -14,7 +14,7 @@
         </el-menu-item>
       </el-menu>
     </header>
-    <main class="sidemenu" v-bind:class='{ "layout-sidemenu": showAside }'>
+    <main class="layout" v-bind:class='{ "layout-sidemenu": showAside }'>
       <transition name="slide-fade">
         <aside v-if="showAside">
           <documents-list></documents-list>
@@ -107,7 +107,7 @@ aside {
 }
 
 .layout {
-  margin-top: -21px;
+  padding-left: 0px;
   transition: all .3s ease;
 }
 
