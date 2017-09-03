@@ -1,12 +1,10 @@
 <template>
   <div class="document-container" v-loading="loading">
-    <div class="container">
-      <h1 class="display-3">{{document.title}} <small>#{{document.id}}</small></h1>
-      <hr class="my-4">
-      <p class="lead" v-html="document.body">
-        {{document.body}}
-      </p>
-    </div>
+    <h1 class="display-3">{{document.title}} <small>#{{document.id}}</small></h1>
+    <hr class="my-4">
+    <p class="lead" v-html="document.body">
+      {{document.body}}
+    </p>
   </div>
 </template>
 
@@ -54,6 +52,6 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .document-container {
-  padding: 20px
+  padding: 0 20px
 }
 </style>

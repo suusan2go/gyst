@@ -7,7 +7,11 @@
             <div class="label">your gist title here</div>
             <el-input v-model="form.name"></el-input>
             <div class="label">your gist body here</div>
-            <el-input type="textarea" v-model="form.desc" class="form-textare" rows="18"></el-input>
+            <el-input
+              type="textarea" v-model="form.desc" class="form-textare"
+              rows="18"
+            >
+            </el-input>
             <el-form-item class="button-group">
               <el-button type="primary" @click="onSubmit" size="large">Submit This Gist!</el-button>
             </el-form-item>
@@ -15,8 +19,8 @@
         </div>
       </el-col>
       <el-col :span="12">
-        <div class="preview-container markdown">
-          <div class="grid-content bg-purple-light" v-html="markdownHtml"></div>
+        <div class="preview-container">
+          <markdown :title="form.name" :body="markdownHtml"></markdown>
         </div>
       </el-col>
     </el-row>
@@ -25,9 +29,12 @@
 
 <script>
 import commonmark from 'commonmark';
+import Markdown from '@/components/Markdown';
 
 export default {
-  name: 'hello',
+  components: {
+    Markdown,
+  },
   computed: {
     markdownHtml() {
       const reader = new commonmark.Parser();
@@ -70,9 +77,4 @@ export default {
   padding-left: 20px;
 }
 
-.markdown {
-  li {
-    list-style: initial;
-  }
-}
 </style>

@@ -1,0 +1,38 @@
+<template>
+  <div class="markdown">
+    <h1 class="markdown-title">{{title}}</h1>
+    <hr></hr>
+    <div class="grid-content bg-purple-light" v-html="body"></div>
+  </div>
+</template>
+
+<script>
+export default {
+  props: ['title', 'body'],
+  updated() {
+    console.log(this.props);
+  },
+  data() {
+    return {};
+  },
+};
+</script>
+
+<style scoped>
+.markdown {
+  height: 300px;
+  overflow: scroll;
+
+  &-title {
+    font-size: 2.5em;
+  }
+
+  >>> ul {
+    list-style: initial;
+  }
+
+  >>> ol {
+    list-style: decimal;
+  }
+}
+</style>
