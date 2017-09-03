@@ -22,7 +22,7 @@
       </transition>
       <router-view @hideSidemenu="hideSidemenu()" @showSidemenu="showSidemenu()">
       </router-view>
-      <router-link :to="{ name: 'DocumentsNew' }" class="header-logo">
+      <router-link :to="{ name: 'DocumentsNew' }" class="header-logo" v-if="showAside">
         <el-button type="primary" icon="edit" size="large" class="btn-circle">
         </el-button>
       </router-link>
@@ -66,7 +66,7 @@ a {
   font-size: 24px;
   line-height: 1.33;
   border-radius: 30px;
-  position: absolute;
+  position: fixed;
   bottom: 20px;
   right: 30px;
 }

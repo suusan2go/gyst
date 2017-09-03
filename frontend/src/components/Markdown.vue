@@ -20,8 +20,9 @@ export default {
 
 <style scoped>
 .markdown {
-  height: 300px;
+  box-sizing: border-box;
   overflow: scroll;
+  padding-bottom: 10px;
 
   &-title {
     font-size: 2.5em;

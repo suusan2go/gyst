@@ -9,12 +9,17 @@
             <div class="label">your gist body here</div>
             <el-input
               type="textarea" v-model="form.desc" class="form-textare"
-              rows="18"
+               :autosize="{ minRows: 15 }"
             >
             </el-input>
-            <el-form-item class="button-group">
-              <el-button type="primary" @click="onSubmit" size="large">Submit This Gist!</el-button>
-            </el-form-item>
+            <div class="btn-actions">
+              <el-button type="default" icon="arrow-left" class="btn-circle" @click="goBack()">
+                Back
+              </el-button>
+              <el-button type="primary" icon="check" class="btn-circle">
+                Save
+              </el-button>
+            </div>
           </el-form>
         </div>
       </el-col>
@@ -52,6 +57,11 @@ export default {
       },
     };
   },
+  methods: {
+    goBack() {
+      this.$router.go(-1);
+    },
+  },
   created() {
     this.$emit('hideSidemenu');
   },
@@ -62,6 +72,10 @@ export default {
 </script>
 
 <style scoped>
+.el-textarea__inner {
+  min-height: 98vh;
+}
+
 .label {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -70,11 +84,25 @@ export default {
 }
 
 .button-group {
-  margin-top: 30px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 
 .preview-container {
   padding-left: 20px;
+}
+
+.btn-actions {
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+}
+
+.btn-circle {
+  padding: 10px 16px;
+  font-size: 14px;
+  line-height: 1.33;
 }
 
 </style>
