@@ -20,6 +20,10 @@ exports.cssLoaders = function (options) {
     }
   }
 
+  var postcssLoader = {
+    loader: 'postcss-loader',
+  }
+
   // generate loader string to be used with extract text plugin
   function generateLoaders (loader, loaderOptions) {
     var loaders = [cssLoader]

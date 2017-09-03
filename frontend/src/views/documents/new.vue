@@ -15,7 +15,7 @@
         </div>
       </el-col>
       <el-col :span="12">
-        <div class="preview-container">
+        <div class="preview-container markdown">
           <div class="grid-content bg-purple-light" v-html="markdownHtml"></div>
         </div>
       </el-col>
@@ -68,5 +68,11 @@ export default {
 
 .preview-container {
   padding-left: 20px;
+}
+
+.markdown {
+  li {
+    list-style: initial;
+  }
 }
 </style>
