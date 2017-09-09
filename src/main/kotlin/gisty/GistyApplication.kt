@@ -22,6 +22,7 @@ import org.springframework.boot.web.servlet.FilterRegistrationBean
 import org.springframework.context.annotation.Primary
 import org.springframework.security.oauth2.client.filter.OAuth2ClientContextFilter
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter
+import org.springframework.security.web.csrf.CookieCsrfTokenRepository
 
 
 @SpringBootApplication
@@ -45,7 +46,10 @@ class GistyApplication: WebSecurityConfigurerAdapter() {
                 .anyRequest()
                 .authenticated()
                 .and()
-                .addFilterBefore(ssoFilter(), BasicAuthenticationFilter::class.java);
+                .addFilterBefore(ssoFilter(), BasicAuthenticationFilter::class.java)
+                .csrf()
+                .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());
+
     }
 
     private fun ssoFilter(): Filter {

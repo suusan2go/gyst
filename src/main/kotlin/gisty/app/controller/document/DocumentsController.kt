@@ -7,9 +7,9 @@ import gisty.domain.model.User
 import gisty.domain.service.document.UserDocumentService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.security.core.annotation.AuthenticationPrincipal
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.validation.BindingResult
+import org.springframework.validation.annotation.Validated
+import org.springframework.web.bind.annotation.*
 
 @RestController
 class DocumentsController(@Autowired userDocumentService: UserDocumentService ): ApiController() {
@@ -24,5 +24,10 @@ class DocumentsController(@Autowired userDocumentService: UserDocumentService ):
     fun document(@AuthenticationPrincipal principal: User, @PathVariable("id") documentId: Int ): Document {
         return userDocumentService.findUserDocument(principal, documentId) ?:
                 throw NotFoundException("User has no documents with id $documentId")
+    }
+
+    @PostMapping("/documents")
+    fun submitDocument(@AuthenticationPrincipal principal: User,
+                       @Validated @RequestBody form: DocumentForm) {
     }
 }
