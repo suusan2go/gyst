@@ -5,10 +5,10 @@
         <div class="grid-content">
           <el-form ref="form" :model="form" label-width="120px">
             <div class="label">your gist title here</div>
-            <el-input v-model="form.name"></el-input>
+            <el-input v-model="form.title"></el-input>
             <div class="label">your gist body here</div>
             <el-input
-              type="textarea" v-model="form.desc" class="form-textare"
+              type="textarea" v-model="form.body" class="form-textare"
                :autosize="{ minRows: 15 }"
             >
             </el-input>
@@ -16,7 +16,7 @@
               <el-button type="default" icon="arrow-left" class="btn-circle" @click="goBack()">
                 Back
               </el-button>
-              <el-button type="primary" icon="check" class="btn-circle">
+              <el-button type="primary" icon="check" class="btn-circle" @click="submit()">
                 Save
               </el-button>
             </div>
@@ -25,7 +25,7 @@
       </el-col>
       <el-col :span="12">
         <div class="preview-container">
-          <markdown :title="form.name" :body="markdownHtml"></markdown>
+          <markdown :title="form.title" :body="markdownHtml"></markdown>
         </div>
       </el-col>
     </el-row>
@@ -35,6 +35,9 @@
 <script>
 import commonmark from 'commonmark';
 import Markdown from '@/components/Markdown';
+import ApiClient from '@/api';
+
+const client = new ApiClient();
 
 export default {
   components: {
@@ -44,7 +47,7 @@ export default {
     markdownHtml() {
       const reader = new commonmark.Parser();
       const writer = new commonmark.HtmlRenderer();
-      const parsed = reader.parse(this.form.desc); // parsed is a 'Node' tree
+      const parsed = reader.parse(this.form.body); // parsed is a 'Node' tree
       // transform parsed if you like...
       return writer.render(parsed); // result is a String
     },
@@ -52,14 +55,17 @@ export default {
   data() {
     return {
       form: {
-        name: '',
-        desc: '',
+        title: '',
+        body: '',
       },
     };
   },
   methods: {
     goBack() {
       this.$router.go(-1);
+    },
+    async submit() {
+      this.document = await client.createDocument(this.form);
     },
   },
   created() {
