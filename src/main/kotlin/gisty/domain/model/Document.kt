@@ -8,8 +8,9 @@ class Document: Entity {
     lateinit var title: String
     lateinit var body: String
 
-    constructor(id: Int, name: String, body: String): this() {
+    constructor(id: Int, userId: Int, title: String, body: String): this() {
         this.id = id
+        this.userId = userId
         this.title = title
         this.body = body
         this.updatedDatetime = LocalDateTime.now()

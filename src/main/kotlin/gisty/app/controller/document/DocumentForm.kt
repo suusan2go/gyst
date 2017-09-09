@@ -8,9 +8,9 @@ import java.time.LocalTime;
 
 class DocumentForm: Serializable {
     @get:NotBlank(message = "必須です")
-    var title: String? = null
+    var title: String = ""
     @get:NotBlank(message = "必須です")
-    var body: String? = null
+    var body: String = ""
 }
 
 

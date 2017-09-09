@@ -15,7 +15,12 @@ class UserDocumentService(@Autowired userDocumentRepository: UserDocumentReposit
     }
 
     fun findUserDocument(user: User, documentId: Int): Document? {
-        val document = userDocumentRepository.findDocument(userId = user.id, documentId = documentId)
+        return userDocumentRepository.findDocument(userId = user.id, documentId = documentId)
+    }
+
+    fun createDocument(title: String, body: String, author: User): Document {
+        val document = Document(0, author.id, title, body)
+        userDocumentRepository.createDocument(document)
         return document
     }
 }

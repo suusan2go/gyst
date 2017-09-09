@@ -1,7 +1,9 @@
 package gisty.domain.repository.document
 
 import gisty.domain.model.Document
+import org.apache.ibatis.annotations.Insert
 import org.apache.ibatis.annotations.Mapper
+import org.apache.ibatis.annotations.Options
 import org.apache.ibatis.annotations.Select
 
 @Mapper
@@ -23,6 +25,14 @@ interface UserDocumentRepository {
         """
     )
     fun findDocument(userId: Int, documentId: Int): Document?
+
+    @Insert("""
+        INSERT INTO documents (user_id, title, body, updated_datetime, created_datetime) VALUES
+        (#{userId}, #{title}, #{body}, #{updatedDatetime}, #{createdDatetime})
+        """
+    )
+    @Options(useGeneratedKeys=true, keyProperty="id")
+    fun createDocument(user: Document)
 
     @Select("""
         SELECT * FROM documents

@@ -28,6 +28,7 @@ class DocumentsController(@Autowired userDocumentService: UserDocumentService ):
 
     @PostMapping("/documents")
     fun submitDocument(@AuthenticationPrincipal principal: User,
-                       @Validated @RequestBody form: DocumentForm) {
+                       @Validated @RequestBody form: DocumentForm): Document {
+        return userDocumentService.createDocument(form.title, form.body, principal)
     }
 }
