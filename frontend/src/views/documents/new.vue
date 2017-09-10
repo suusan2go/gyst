@@ -65,7 +65,8 @@ export default {
       this.$router.go(-1);
     },
     async submit() {
-      this.document = await client.createDocument(this.form);
+      const document = await client.createDocument(this.form);
+      this.$router.push({ name: 'DocumentsOne', params: { id: document.id } });
     },
   },
   created() {
