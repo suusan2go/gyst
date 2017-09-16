@@ -3,7 +3,7 @@
     <ul class="documents-list">
       <li class="document-item" v-for="document in documents">
         <router-link :to="{ name: 'DocumentsOne', params: { id: document.id }}" class="document-item-link">
-          <div class="document-item-container">
+          <div class="document-item-container" v-bind:class="{ active: isCurrentItem(document.id) }">
             <h3 class="document-title">{{document.title}}</h3>
             <p class="document-body">{{document.body}}</p>
           </div>
@@ -36,7 +36,7 @@
   padding-bottom: 10px;
   text-overflow: ellipsis;
 }
-.document-item-container:hover {
+.document-item-container:hover, .document-item-container.active {
   background-color: rgb(209, 229, 221);
 }
 .document-title {
@@ -73,6 +73,9 @@ export default {
       this.loading = true;
       this.documents = await client.getDocuments();
       this.loading = false;
+    },
+    isCurrentItem(id) {
+      return id === parseInt(this.$route.params.id, 10);
     },
   },
 };
