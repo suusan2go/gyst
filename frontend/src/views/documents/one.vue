@@ -2,9 +2,7 @@
   <div class="document-container" v-loading="loading">
     <h1 class="display-3">{{document.title}} <small>#{{document.id}}</small></h1>
     <hr class="my-4">
-    <p class="lead" v-html="document.body">
-      {{document.body}}
-    </p>
+    <p class="lead" v-html="document.bodyHtml"></p>
   </div>
 </template>
 
