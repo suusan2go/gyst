@@ -17,7 +17,6 @@ export default new Router({
     },
     {
       path: '/documents',
-      name: 'Documents',
       component: DocumentsLayout,
       props: (route) => {
         route.path.indexOf(['new']);
