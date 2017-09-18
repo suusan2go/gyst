@@ -1,6 +1,15 @@
 <template>
   <div class="document-container" v-loading="loading">
-    <h1 class="display-3">{{document.title}} <small>#{{document.id}}</small></h1>
+    <el-row type="flex" :gutter="20" align="middle">
+      <el-col :span="20">
+        <h1 class="display-3">{{document.title}} <small>#{{document.id}}</small></h1>
+      </el-col>
+      <el-col :span="4">
+        <div  class="button-group">
+          <el-button type="primary" icon="share">Share</el-button>
+        </div>
+      </el-col>
+    </el-row>
     <hr class="my-4">
     <p class="lead" v-html="document.bodyHtml"></p>
   </div>
@@ -51,5 +60,14 @@ export default {
 <style scoped>
 .document-container {
   padding: 0 20px
+}
+.button-group {
+  float: right;
+}
+>>> ul {
+  list-style: initial;
+}
+>>> ol {
+  list-style: decimal;
 }
 </style>
