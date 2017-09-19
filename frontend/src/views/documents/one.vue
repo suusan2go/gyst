@@ -6,12 +6,15 @@
       </el-col>
       <el-col :span="4">
         <div  class="button-group">
-          <el-button type="primary" icon="share">Share</el-button>
+          <router-link :to="{ name: 'DocumentsOneShare' }">
+            <el-button type="primary" icon="share">Share</el-button>
+          </router-link>
         </div>
       </el-col>
     </el-row>
     <hr class="my-4">
     <p class="lead" v-html="document.bodyHtml"></p>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -22,7 +25,6 @@ import ApiClient from '@/api';
 const client = new ApiClient();
 
 export default {
-  name: 'hello',
   props: ['id'],
   components: {
     DocumentsLayout,
@@ -41,6 +43,7 @@ export default {
   },
   methods: {
     async fetchData() {
+      if (parseInt(this.id, 10) === this.document.id) return;
       this.loading = true;
       this.document = await client.getDocument(this.$route.params.id);
       setTimeout(() => {

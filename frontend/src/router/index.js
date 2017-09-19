@@ -4,6 +4,7 @@ import Root from '@/views/root/index';
 import DocumentsLayout from '@/components/DocumentsLayout';
 import DocumentsIndex from '@/views/documents/index';
 import DocumentsOne from '@/views/documents/one';
+import DocumentsOneShare from '@/views/documents/one/share';
 import DocumentsNew from '@/views/documents/new';
 
 Vue.use(Router);
@@ -36,6 +37,15 @@ export default new Router({
           path: ':id',
           name: 'DocumentsOne',
           component: DocumentsOne,
+          props: true,
+          children: [
+            {
+              path: 'share',
+              name: 'DocumentsOneShare',
+              component: DocumentsOneShare,
+              props: true,
+            },
+          ],
         },
       ],
     },
