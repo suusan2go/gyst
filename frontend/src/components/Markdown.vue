@@ -9,9 +9,6 @@
 <script>
 export default {
   props: ['title', 'body'],
-  updated() {
-    console.log(this.props);
-  },
   data() {
     return {};
   },
