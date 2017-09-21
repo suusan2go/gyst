@@ -23,10 +23,17 @@ hs_err_pid*
 
 # intellij
 .idea
-gisty.iml
 
 # maven
 /target/
+
+# gradle
+out/
+### Gradle ###
+## Exclude Folder List #
+.gradle/
+build/
+out/
 
 # direnv
 .envrc
