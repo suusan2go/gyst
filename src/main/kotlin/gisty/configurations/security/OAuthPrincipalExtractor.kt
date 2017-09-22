@@ -24,7 +24,7 @@ open class OAuthPrincipalExtractor @Autowired constructor(
         val name = UserName(map.get("name") as String)
         val socialProfile = SocialProfile.buildFromAuth(map, provider)
 
-        var user = userRepository.findByEmail(email)
+        val user = userRepository.findByEmail(email)
                 ?: userRepository.findBySocialProfile(socialProfile)
                 ?: userRepository.createUser(User(UserId(0), name, email, DateTime.current(), DateTime.current()))
         socialProfileRepository.findByUidAndProvider(socialProfile.uid, socialProfile.provider) ?:
