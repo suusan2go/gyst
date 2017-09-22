@@ -21,7 +21,7 @@ data class SocialProfile(
                     SocialProfileId(0),
                     UserId(0),
                     SocialProfileUid(uid),
-                    SocialProfileProvider.init(providerName),
+                    SocialProfileProvider(providerName),
                     SocialProfileAuth(auth),
                     DateTime.current(),
                     DateTime.current()

@@ -8,7 +8,7 @@ enum class SocialProfileProvider {
     abstract fun typeName(): String
 
     companion object {
-        fun init(providerName: String): SocialProfileProvider{
+        operator fun invoke(providerName: String): SocialProfileProvider{
             return when(providerName){
                 "google" -> GOOGLE
                 else -> throw IllegalArgumentException()
