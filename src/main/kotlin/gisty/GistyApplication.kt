@@ -1,7 +1,7 @@
 package gisty
 
-import gisty.security.GooglePrincipalExtractor
-import gisty.security.SocialAuthenticationSuccessHandler
+import gisty.configurations.security.GooglePrincipalExtractor
+import gisty.configurations.security.SocialAuthenticationSuccessHandler
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.SpringBootApplication
