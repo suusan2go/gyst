@@ -6,13 +6,13 @@ import org.apache.ibatis.annotations.Select
 import java.time.LocalDateTime
 
 data class SocialProfileRecord(
-        val id: Int,
-        val userId: Int,
-        val uid: String,
-        val provider: String,
-        val auth: String,
-        val updatedDateTime: LocalDateTime,
-        val createdDateTime: LocalDateTime
+        var id: Int? = null,
+        val userId: Int = 0,
+        val uid: String = "",
+        val provider: String = "",
+        val auth: String = "",
+        val updatedDatetime: LocalDateTime = LocalDateTime.now(),
+        val createdDatetime: LocalDateTime = LocalDateTime.now()
 )
 
 @Mapper

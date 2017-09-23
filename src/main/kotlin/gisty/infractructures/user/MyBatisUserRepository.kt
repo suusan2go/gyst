@@ -35,7 +35,7 @@ class MyBatisUserRepository(@Autowired private val userMapper: UserMapper): User
     }
 
     override fun findBySocialProfile(socialProfile: SocialProfile): User? {
-        val record = userMapper.findByPrincipalId(socialProfile.uid.value, socialProfile.provider.typeName())
+        val record = userMapper.findByPrincipalId(uid = socialProfile.uid.value, provider = socialProfile.provider.typeName())
         return record?.let {
             recordToUser(it)
         }
@@ -46,8 +46,8 @@ class MyBatisUserRepository(@Autowired private val userMapper: UserMapper): User
                 UserId(record.id!!),
                 UserName(record.name),
                 UserEmail(record.email),
-                DateTime(record.updatedDateTime),
-                DateTime(record.createdDateTime)
+                DateTime(record.updatedDatetime),
+                DateTime(record.createdDatetime)
         )
     }
 }

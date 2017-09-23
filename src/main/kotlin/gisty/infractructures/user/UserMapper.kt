@@ -7,12 +7,13 @@ import org.apache.ibatis.annotations.Select
 import java.time.LocalDateTime
 
 data class UserRecord(
-        var id: Int?,
-        val name: String,
-        val email: String,
-        val updatedDateTime: LocalDateTime,
-        val createdDateTime: LocalDateTime
+        var id: Int? = null,
+        val name: String = "",
+        val email: String = "",
+        val updatedDatetime: LocalDateTime = LocalDateTime.now(),
+        val createdDatetime: LocalDateTime = LocalDateTime.now()
 )
+
 
 @Mapper
 interface UserMapper {

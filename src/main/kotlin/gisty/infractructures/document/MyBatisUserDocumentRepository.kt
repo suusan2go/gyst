@@ -51,12 +51,12 @@ class MyBatisUserDocumentRepository(
 
     private fun recordToDocument(record: DocumentRecord): Document{
         return Document(
-                DocumentId(record.id),
-                UserId(record.id),
+                DocumentId(record.id!!),
+                UserId(record.userId),
                 DocumentTitle(record.title),
                 DocumentBody(record.body),
-                DateTime(record.updatedDateTime),
-                DateTime(record.createdDateTime)
+                DateTime(record.updatedDatetime),
+                DateTime(record.createdDatetime)
         )
     }
 }

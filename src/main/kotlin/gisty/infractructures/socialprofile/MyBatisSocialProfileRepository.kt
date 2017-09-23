@@ -25,7 +25,7 @@ class MyBatisSocialProfileRepository(
     }
 
     override fun findByUidAndProvider(uid: SocialProfileUid, provider: SocialProfileProvider): SocialProfile? {
-        val record = socialProfileMapper.findByUidAndProvider(uid.value, provider.typeName())
+        val record = socialProfileMapper.findByUidAndProvider(uid = uid.value, provider = provider.typeName())
         return record?.let{
             recordToSocialProfile(it)
         }
@@ -33,13 +33,13 @@ class MyBatisSocialProfileRepository(
 
     private fun recordToSocialProfile(record: SocialProfileRecord): SocialProfile {
         return SocialProfile(
-                SocialProfileId(record.id),
+                SocialProfileId(record.id!!),
                 UserId(record.userId),
                 SocialProfileUid(record.uid),
-                SocialProfileProvider.init((record.provider)),
+                SocialProfileProvider(record.provider),
                 SocialProfileAuth(record.auth),
-                DateTime(record.updatedDateTime),
-                DateTime(record.createdDateTime)
+                DateTime(record.updatedDatetime),
+                DateTime(record.createdDatetime)
         )
     }
 }

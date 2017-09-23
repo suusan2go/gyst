@@ -7,12 +7,12 @@ import org.apache.ibatis.annotations.Options
 import org.apache.ibatis.annotations.Select
 
 data class DocumentRecord(
-        val id: Int,
-        val userId: Int,
-        val title: String,
-        val body: String,
-        val updatedDateTime: LocalDateTime,
-        val createdDateTime: LocalDateTime
+        val id: Int? = null,
+        val userId: Int = 1,
+        val title: String = "",
+        val body: String = "",
+        val updatedDatetime: LocalDateTime = LocalDateTime.now(),
+        val createdDatetime: LocalDateTime = LocalDateTime.now()
 )
 
 @Mapper
