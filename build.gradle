@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        kotlinVersion = '1.1.4-3'
+        kotlinVersion = '1.1.50'
         springBootVersion = '1.5.7.RELEASE'
     }
     repositories {
@@ -23,10 +23,16 @@ group = 'gisty'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 compileKotlin {
-    kotlinOptions.jvmTarget = "1.8"
+    kotlinOptions {
+        jvmTarget = "1.8"
+        javaParameters = true
+    }
 }
 compileTestKotlin {
-    kotlinOptions.jvmTarget = "1.8"
+    kotlinOptions {
+        jvmTarget = "1.8"
+        javaParameters = true
+    }
 }
 
 repositories {
@@ -37,8 +43,8 @@ dependencies {
     compile group: 'org.flywaydb', name: 'flyway-core', version:'3.2.1'
     compile group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version:'1.3.0'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version:'1.5.6.RELEASE'
-    compile group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-jre8', version:'1.1.4'
-    compile group: 'org.jetbrains.kotlin', name: 'kotlin-reflect', version:'1.1.4'
+    compile group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-jre8', version:'1.1.50'
+    compile group: 'org.jetbrains.kotlin', name: 'kotlin-reflect', version:'1.1.50'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version:'1.5.6.RELEASE'
     compile group: 'org.springframework.security.oauth', name: 'spring-security-oauth2', version:'2.0.14.RELEASE'
     compile group: 'org.mybatis', name: 'mybatis-typehandlers-jsr310', version:'1.0.2'
