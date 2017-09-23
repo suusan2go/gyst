@@ -28,8 +28,7 @@ open class OAuthPrincipalExtractor @Autowired constructor(
                 ?: userRepository.findBySocialProfile(socialProfile)
                 ?: userRepository.createUser(User(UserId(0), name, email, DateTime.current(), DateTime.current()))
         socialProfileRepository.findByUidAndProvider(socialProfile.uid, socialProfile.provider) ?:
-            LOGGER.info("No social profile found, generating profile for {}", socialProfile)
-            socialProfileRepository.createSocialProfile(socialProfile.copy(userId =  user.id))
+                socialProfileRepository.createSocialProfile(socialProfile.copy(userId = user.id))
         return user
     }
 }

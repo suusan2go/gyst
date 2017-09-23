@@ -19,7 +19,6 @@ class UserDocumentService(@Autowired private val userDocumentRepository: UserDoc
     }
 
     fun createDocument(document: Document): Document {
-        userDocumentRepository.createDocument(document)
-        return document
+        return userDocumentRepository.createDocument(document)
     }
 }
