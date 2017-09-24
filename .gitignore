@@ -32,8 +32,8 @@ out/
 ### Gradle ###
 ## Exclude Folder List #
 .gradle/
-build/
-out/
+./build/
+./out/
 
 # direnv
 .envrc

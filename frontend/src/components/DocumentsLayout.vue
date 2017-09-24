@@ -7,9 +7,9 @@
       </router-link>
       <el-menu theme="light" :default-active="activeIndex" router="true" mode="horizontal" @select="handleSelect">
         <el-menu-item>
-          <a href="/login/google">
+          <a href="/logout">
             <icon name="google"></icon>
-            Login
+            Logout
           </a>
         </el-menu-item>
       </el-menu>
