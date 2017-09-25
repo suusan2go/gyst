@@ -1,7 +1,5 @@
 package gisty.domains.document
 
-import com.fasterxml.jackson.annotation.JsonIgnore
-import com.fasterxml.jackson.annotation.JsonProperty
 import gisty.domains.DateTime
 import gisty.domains.user.UserId
 import org.commonmark.node.Node
