@@ -16,8 +16,7 @@ import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
 
 @RestController
-class DocumentsController(@Autowired userDocumentService: UserDocumentService ): ApiController() {
-    val userDocumentService = userDocumentService
+class DocumentsController(@Autowired val userDocumentService: UserDocumentService ): ApiController() {
 
     @GetMapping("/documents")
     fun listDocuments(@AuthenticationPrincipal principal: User): List<DocumentView> {
@@ -42,3 +41,4 @@ class DocumentsController(@Autowired userDocumentService: UserDocumentService ):
         )
     }
 }
+
