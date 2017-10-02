@@ -33,7 +33,7 @@ class MyBatisSocialProfileRepository(
 
     private fun recordToSocialProfile(record: SocialProfileRecord): SocialProfile {
         return SocialProfile(
-                SocialProfileId(record.id!!),
+                DefinedSocialProfileId(record.id!!),
                 UserId(record.userId),
                 SocialProfileUid(record.uid),
                 SocialProfileProvider(record.provider),

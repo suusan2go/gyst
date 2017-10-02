@@ -15,7 +15,7 @@ class AuthenticationService(
     fun authenticate(userEmail: UserEmail, userName: UserName, socialProfile: SocialProfile): User {
         val user = userRepository.findByEmail(userEmail)
                 ?: userRepository.findBySocialProfile(socialProfile)
-                ?: userRepository.createUser(User(UserId(0), userName, userEmail, DateTime.current(), DateTime.current()))
+                ?: userRepository.createUser(User(EmptyUserId(), userName, userEmail, DateTime.current(), DateTime.current()))
         socialProfileRepository.findByUidAndProvider(socialProfile.uid, socialProfile.provider) ?:
                 socialProfileRepository.createSocialProfile(socialProfile.copy(userId = user.id))
         return user

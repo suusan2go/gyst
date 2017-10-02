@@ -1,6 +1,9 @@
 package gisty.domains.user
 
 import gisty.domains.DateTime
+import gisty.support.EmptyIdentifier
+import gisty.support.Identifier
+import gisty.support.PersistedIdentifier
 
 data class User(
         val id: UserId,
@@ -10,6 +13,17 @@ data class User(
         val createdDateTime: DateTime
 )
 
-data class UserId(open val value: Int)
+interface UserId {
+    val value: Int
+    companion object {
+        operator fun invoke(value: Int): DefinedUserId {
+            return DefinedUserId(value)
+        }
+    }
+}
+
+data class DefinedUserId(override val value: Int): UserId, PersistedIdentifier<Int>(value)
+class EmptyUserId: EmptyIdentifier(), UserId
+
 data class UserName(val value: String)
 data class UserEmail(val value: String)
