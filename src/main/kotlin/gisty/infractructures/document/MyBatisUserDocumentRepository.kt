@@ -51,7 +51,7 @@ class MyBatisUserDocumentRepository(
 
     private fun recordToDocument(record: DocumentRecord): Document{
         return Document(
-                DocumentId(record.id!!),
+                DefinedDocumentId(record.id!!),
                 UserId(record.userId),
                 DocumentTitle(record.title),
                 DocumentBody(record.body),

@@ -2,11 +2,8 @@ package gisty.controllers.document
 
 import gisty.controllers.ApiController
 import gisty.domains.DateTime
+import gisty.domains.document.*
 import gisty.exceptions.NotFoundException
-import gisty.domains.document.Document
-import gisty.domains.document.DocumentBody
-import gisty.domains.document.DocumentId
-import gisty.domains.document.DocumentTitle
 import gisty.domains.user.User
 import gisty.services.document.UserDocumentService
 import gisty.views.DocumentView
@@ -28,7 +25,7 @@ class DocumentsController(@Autowired val userDocumentService: UserDocumentServic
     @GetMapping("/documents/{id}")
     fun document(@AuthenticationPrincipal principal: User, @PathVariable("id") documentId: Int ): DocumentView {
         return DocumentView(
-                userDocumentService.findUserDocument(principal, DocumentId(documentId)) ?:
+                userDocumentService.findUserDocument(principal, DefinedDocumentId(documentId)) ?:
                 throw NotFoundException("User has no documents with id $documentId")
         )
     }
