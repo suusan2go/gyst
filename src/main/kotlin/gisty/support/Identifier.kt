@@ -15,7 +15,10 @@ abstract class PersistedIdentifier<T>(override val value: T): Identifier<T> {
     override fun hashCode() = 31 * value!!.hashCode()
 }
 
-abstract class EmptyIdentifier(override val value: Nothing = throw NoSuchElementException()): Identifier<Nothing> {
+abstract class EmptyIdentifier: Identifier<Nothing> {
+    override val value: Nothing
+      get() = throw NoSuchElementException()
+
     override fun equals(obj: Any?): Boolean {
         return when(obj){
             is EmptyIdentifier -> this == obj
