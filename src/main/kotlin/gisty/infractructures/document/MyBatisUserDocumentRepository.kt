@@ -19,7 +19,7 @@ class MyBatisUserDocumentRepository(
 
     override fun createDocument(document: Document): Document {
         val record = DocumentRecord(
-                document.id.value,
+                null,
                 document.userId.value,
                 document.title.value,
                 document.body.value,
