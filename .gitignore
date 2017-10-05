@@ -63,3 +63,6 @@ nbbuild/
 dist/
 nbdist/
 .nb-gradle/
+
+# ideavim
+.ideavimrc
