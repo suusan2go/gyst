@@ -7,8 +7,8 @@ import 'vue-awesome/icons';
 import 'normalize.css';
 import '@/assets/element-custom-theme/index.css';
 
-import App from './App';
-import router from './router';
+import App from '@/App';
+import router from '@/router';
 
 Vue.use(ElementUI);
 Vue.component('icon', Icon);
