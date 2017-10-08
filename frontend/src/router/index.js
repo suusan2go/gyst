@@ -6,6 +6,7 @@ import DocumentsIndex from '@/views/documents/index';
 import DocumentsOne from '@/views/documents/one';
 import DocumentsOneShare from '@/views/documents/one/share';
 import DocumentsNew from '@/views/documents/new';
+import DocumentsOneEdit from '@/views/documents/one/edit';
 
 Vue.use(Router);
 
@@ -32,6 +33,12 @@ export default new Router({
           path: 'new',
           name: 'DocumentsNew',
           component: DocumentsNew,
+        },
+        {
+          path: ':id/edit',
+          name: 'DocumentsOneEdit',
+          component: DocumentsOneEdit,
+          props: true,
         },
         {
           path: ':id',

@@ -5,9 +5,12 @@
         <h1 class="display-3">{{document.title}} <small>#{{document.id}}</small></h1>
       </el-col>
       <el-col :span="4">
-        <div  class="button-group">
+        <div class="button-group">
           <router-link :to="{ name: 'DocumentsOneShare' }">
             <el-button type="primary" icon="share">Share</el-button>
+          </router-link>
+          <router-link :to="{ name: 'DocumentsOneEdit', id: document.id }">
+            <el-button type="default" icon="edit">Edit</el-button>
           </router-link>
         </div>
       </el-col>
@@ -66,6 +69,10 @@ export default {
 }
 .button-group {
   float: right;
+  width: 200px;
+  >>> a {
+    margin-right: 10px;
+  }
 }
 >>> ul {
   list-style: initial;
