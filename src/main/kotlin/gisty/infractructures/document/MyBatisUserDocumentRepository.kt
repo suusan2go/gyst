@@ -30,6 +30,19 @@ class MyBatisUserDocumentRepository(
         return recordToDocument(record)
     }
 
+    override fun updateDocument(document: Document): Document? {
+        val record = DocumentRecord(
+                document.id.value,
+                document.userId.value,
+                document.title.value,
+                document.body.value,
+                document.updatedDatetime.value,
+                document.createdDateTime.value
+        )
+        documentMapper.updateDocument(record)
+        return recordToDocument(record)
+    }
+
     override fun findDocument(userId: UserId, documentId: DocumentId): Document? {
         val record = documentMapper.findDocument(userId.value, documentId.value)
         return record?.let {

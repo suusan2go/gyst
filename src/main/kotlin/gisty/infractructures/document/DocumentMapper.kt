@@ -43,6 +43,13 @@ interface UserDocumentMapper {
     @Options(useGeneratedKeys=true, keyProperty="id")
     fun createDocument(documentRecord: DocumentRecord)
 
+    @Insert("""
+        UPDATE documents SET title = #{title}, body = #{body}, updated_datetime = #{updatedDatetime}
+        WHERE documents.id = #{id}
+        """
+    )
+    fun updateDocument(documentRecord: DocumentRecord)
+
     @Select("""
         SELECT * FROM documents
         WHERE user_id = #{user_id} AND
