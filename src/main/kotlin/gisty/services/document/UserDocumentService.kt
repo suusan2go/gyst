@@ -1,5 +1,6 @@
 package gisty.services.document
 
+import gisty.domains.DateTime
 import gisty.domains.document.Document
 import gisty.domains.document.DocumentId
 import gisty.domains.user.User
@@ -20,5 +21,18 @@ class UserDocumentService(@Autowired private val userDocumentRepository: UserDoc
 
     fun createDocument(document: Document): Document {
         return userDocumentRepository.createDocument(document)
+    }
+
+    fun updateDocument(id: DocumentId, document: Document): Document? {
+        val currentDocument = userDocumentRepository.findDocument(document.userId, document.id)
+        return currentDocument?.let {
+            userDocumentRepository.updateDocument(
+                    it.copy(
+                            title = document.title,
+                            body = document.body,
+                            updatedDatetime = DateTime.current()
+                    )
+            )
+        }
     }
 }

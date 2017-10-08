@@ -37,5 +37,16 @@ class DocumentsController(@Autowired val userDocumentService: UserDocumentServic
                 userDocumentService.createDocument(form.toDocument(principal.id))
         )
     }
+
+    @PatchMapping("/documents/{id}")
+    fun updateDocument(@AuthenticationPrincipal principal: User,
+                       @Validated @RequestBody form: DocumentForm,
+                       @PathVariable("id") documentId: Int ): DocumentView {
+        val document = form.toDocument(principal.id)
+        return DocumentView(
+                userDocumentService.updateDocument(DefinedDocumentId(documentId), document) ?:
+                throw NotFoundException("User has no documents with id $documentId")
+        )
+    }
 }
 
