@@ -24,7 +24,7 @@ class UserDocumentService(@Autowired private val userDocumentRepository: UserDoc
     }
 
     fun updateDocument(id: DocumentId, document: Document): Document? {
-        val currentDocument = userDocumentRepository.findDocument(document.userId, document.id)
+        val currentDocument = userDocumentRepository.findDocument(document.userId, id)
         return currentDocument?.let {
             userDocumentRepository.updateDocument(
                     it.copy(
