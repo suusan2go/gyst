@@ -43,7 +43,7 @@ class MyBatisUserDocumentRepository(
         return recordToDocument(record)
     }
 
-    override fun findDocument(userId: UserId, documentId: DocumentId): Document? {
+    override fun findDocument(userId: UserId, documentId: DefinedDocumentId): Document? {
         val record = documentMapper.findDocument(userId.value, documentId.value)
         return record?.let {
             recordToDocument(it)

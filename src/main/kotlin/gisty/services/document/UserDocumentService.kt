@@ -1,6 +1,7 @@
 package gisty.services.document
 
 import gisty.domains.DateTime
+import gisty.domains.document.DefinedDocumentId
 import gisty.domains.document.Document
 import gisty.domains.document.DocumentId
 import gisty.domains.user.User
@@ -15,7 +16,7 @@ class UserDocumentService(@Autowired private val userDocumentRepository: UserDoc
         return userDocumentRepository.findAllDocuments(user.id)
     }
 
-    fun findUserDocument(user: User, documentId: DocumentId): Document? {
+    fun findUserDocument(user: User, documentId: DefinedDocumentId): Document? {
         return userDocumentRepository.findDocument(userId = user.id, documentId = documentId)
     }
 
@@ -23,7 +24,7 @@ class UserDocumentService(@Autowired private val userDocumentRepository: UserDoc
         return userDocumentRepository.createDocument(document)
     }
 
-    fun updateDocument(id: DocumentId, document: Document): Document? {
+    fun updateDocument(id: DefinedDocumentId, document: Document): Document? {
         val currentDocument = userDocumentRepository.findDocument(document.userId, id)
         return currentDocument?.let {
             userDocumentRepository.updateDocument(
