@@ -35,6 +35,11 @@ export default class ApiClient {
     return response;
   }
 
+  async updateDocument(id: number, value: { title: string, body: string }) {
+    const response: Response = await this.patch(urlHelpers.documentUrl(id), value);
+    return response;
+  }
+
   get(url: string, params: any = {}) {
     return this.axiosClient.get(url, params).then(response => response.data);
   }

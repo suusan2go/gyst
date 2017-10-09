@@ -40,6 +40,7 @@ import ApiClient from '@/api';
 const client = new ApiClient();
 
 export default {
+  props: ['id'],
   components: {
     Markdown,
   },
@@ -66,7 +67,7 @@ export default {
       this.$router.go(-1);
     },
     async submit() {
-      const document = await client.createDocument(this.form);
+      const document = await client.updateDocument(this.id, this.form);
       this.$router.push({ name: 'DocumentsOne', params: { id: document.id } });
     },
     async fetchData() {
