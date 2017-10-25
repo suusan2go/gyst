@@ -54,7 +54,7 @@
 </style>
 
 <script>
-import ApiClient from '@/api';
+import ApiClient from '@/api/index.ts';
 
 const client = new ApiClient();
 

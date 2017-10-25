@@ -1,12 +1,12 @@
 import Vue from 'vue';
-import Router from 'vue-router';
-import Root from '@/views/root/index';
-import DocumentsLayout from '@/components/DocumentsLayout';
-import DocumentsIndex from '@/views/documents/index';
-import DocumentsOne from '@/views/documents/one';
-import DocumentsOneShare from '@/views/documents/one/share';
-import DocumentsNew from '@/views/documents/new';
-import DocumentsOneEdit from '@/views/documents/one/edit';
+import Router, { RouteConfig } from 'vue-router';
+import Root from '@/views/root/index.vue';
+import DocumentsLayout from '@/components/DocumentsLayout.vue';
+import DocumentsIndex from '@/views/documents/index.vue';
+import DocumentsOne from '@/views/documents/one.vue';
+import DocumentsOneShare from '@/views/documents/one/share.vue';
+import DocumentsNew from '@/views/documents/new.vue';
+import DocumentsOneEdit from '@/views/documents/one/edit.vue';
 
 Vue.use(Router);
 
@@ -16,13 +16,10 @@ export default new Router({
       path: '/',
       name: 'Root',
       component: Root,
-    },
+    } as RouteConfig,
     {
       path: '/documents',
       component: DocumentsLayout,
-      props: (route) => {
-        route.path.indexOf(['new']);
-      },
       children: [
         {
           path: '',
@@ -55,7 +52,7 @@ export default new Router({
           ],
         },
       ],
-    },
+    } as RouteConfig,
   ],
   mode: 'history',
 });

@@ -35,7 +35,7 @@
 <script>
 import commonmark from 'commonmark';
 import Markdown from '@/components/Markdown';
-import ApiClient from '@/api';
+import ApiClient from '@/api/index';
 
 const client = new ApiClient();
 
