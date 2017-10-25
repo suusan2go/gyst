@@ -23,7 +23,7 @@
 
 <script>
 import DocumentsLayout from '@/components/DocumentsLayout';
-import ApiClient from '@/api';
+import ApiClient from '@/api/index';
 
 const client = new ApiClient();
 

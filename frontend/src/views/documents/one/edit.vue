@@ -32,14 +32,15 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from 'vue';
 import commonmark from 'commonmark';
-import Markdown from '@/components/Markdown';
-import ApiClient from '@/api';
+import Markdown from '@/components/Markdown.vue';
+import ApiClient from '@/api/index';
 
 const client = new ApiClient();
 
-export default {
+export default Vue.extend({
   props: ['id'],
   components: {
     Markdown,
@@ -68,11 +69,11 @@ export default {
     },
     async submit() {
       const document = await client.updateDocument(this.id, this.form);
-      this.$router.push({ name: 'DocumentsOne', params: { id: document.id } });
+      this.$router.push({ name: 'DocumentsOne', params: { id: document.id.toString() } });
     },
     async fetchData() {
       this.loading = true;
-      this.form = await client.getDocument(this.$route.params.id);
+      this.form = await client.getDocument(parseInt(this.$route.params.id, 10));
       setTimeout(() => {
         this.loading = false;
       }, 300);
@@ -85,7 +86,7 @@ export default {
   beforeDestroy() {
     this.$emit('showSidemenu');
   },
-};
+});
 </script>
 
 <style scoped>

@@ -1,17 +1,16 @@
 /* @flow */
-import axios from 'axios';
-import cookie from 'cookie';
-import type { Axios } from 'axios';
+import axios, { AxiosInstance } from 'axios';
+import cookie, { CookieSerializeOptions } from 'cookie';
 import * as urlHelpers from './url';
 
 export default class ApiClient {
-  axiosClient: Axios;
+  axiosClient: AxiosInstance;
 
   constructor() {
     this.axiosClient = axios.create({
       withCredentials: true,
       headers: {
-        'X-CSRF-TOKEN': cookie['XSRF-TOKEN'],
+        'X-CSRF-TOKEN': cookie.parse(document.cookie)["X-CSRF-TOKEN"],
       },
     });
     this.axiosClient.interceptors.request.use(
@@ -21,22 +20,22 @@ export default class ApiClient {
   }
 
   async getDocuments() {
-    const response: Response = await this.get(urlHelpers.documentsUrl());
+    const response: Response["body"] = await this.get(urlHelpers.documentsUrl());
     return response;
   }
 
   async getDocument(id: number) {
-    const response: Response = await this.get(urlHelpers.documentUrl(id));
+    const response: { id: number, title: string, body: string } = await this.get(urlHelpers.documentUrl(id));
     return response;
   }
 
   async createDocument(value: { title: string, body: string }) {
-    const response: Response = await this.post(urlHelpers.documentsUrl(), value);
+    const response: {id: number, title: string, body: string} = await this.post(urlHelpers.documentsUrl(), value);
     return response;
   }
 
   async updateDocument(id: number, value: { title: string, body: string }) {
-    const response: Response = await this.patch(urlHelpers.documentUrl(id), value);
+    const response: {id: number, title: string, body: string} = await this.patch(urlHelpers.documentUrl(id), value);
     return response;
   }
 
