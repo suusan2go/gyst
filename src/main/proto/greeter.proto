@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option java_package = "io.grpc.examples";
+option java_package = "gisty.grpc";
 
 
 
