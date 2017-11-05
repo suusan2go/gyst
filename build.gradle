@@ -107,10 +107,24 @@ protobuf {
     generatedFilesBaseDir = "${projectDir}/src/"
 }
 
+task generateRubyGrpcClient {
+    FileTree tree = fileTree(dir: 'src/main/proto', include: '**/*.proto')
+    tree.each { proto ->
+        exec {
+            commandLine 'grpc_tools_ruby_protoc', '-I', './src/main/proto', '--ruby_out=./client/ruby/lib/grpc', '--grpc_out=./client/ruby/lib/grpc', proto.getName()
+        }
+    }
+}
+
 clean {
     delete "${projectDir}/src/main/generated-proto"
 }
 
 bootRepackage  {
     executable = true
+}
+
+afterEvaluate {
+    compileKotlin.dependsOn generateProto
+    compileKotlin.dependsOn generateRubyGrpcClient
 }
