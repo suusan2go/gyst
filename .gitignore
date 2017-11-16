@@ -66,6 +66,3 @@ nbdist/
 
 # ideavim
 .ideavimrc
-
-# grpc
-generated-proto

@@ -1,4 +1,3 @@
-
 buildscript {
     ext {
         kotlinVersion = '1.1.51'
@@ -6,13 +5,11 @@ buildscript {
     }
     repositories {
         mavenCentral()
-        jcenter()
     }
     dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${kotlinVersion}")
         classpath("org.jetbrains.kotlin:kotlin-allopen:${kotlinVersion}")
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-        classpath "com.google.protobuf:protobuf-gradle-plugin:0.8.1" // -- (2)
     }
 }
 
@@ -21,13 +18,10 @@ apply plugin: 'kotlin-spring'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
-apply plugin: 'com.google.protobuf'
 
 group = 'gisty'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
-def grpcVersion = '1.7.0'
-
 compileKotlin {
     kotlinOptions {
         jvmTarget = "1.8"
@@ -43,88 +37,24 @@ compileTestKotlin {
 
 repositories {
     mavenCentral()
-    jcenter()
-}
-
-sourceSets {
-    main.kotlin.srcDirs += 'src/main/kotlin'
-    main.kotlin.srcDirs += 'src/main/generated-proto'
 }
 
 dependencies {
-    compile group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-jre8', version:'1.1.51'
-    compile group: 'org.jetbrains.kotlin', name: 'kotlin-reflect', version:'1.1.51'
-
-    runtime group: 'org.postgresql', name: 'postgresql', version:'9.4.1212.jre7'
     compile group: 'org.flywaydb', name: 'flyway-core', version:'3.2.1'
     compile group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version:'1.3.0'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version:'1.5.6.RELEASE'
+    compile group: 'org.jetbrains.kotlin', name: 'kotlin-stdlib-jre8', version:'1.1.51'
+    compile group: 'org.jetbrains.kotlin', name: 'kotlin-reflect', version:'1.1.51'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version:'1.5.6.RELEASE'
+    compile group: 'org.springframework.security.oauth', name: 'spring-security-oauth2', version:'2.0.14.RELEASE'
     compile group: 'org.mybatis', name: 'mybatis-typehandlers-jsr310', version:'1.0.2'
     compile group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version:'2.8.9'
     compile group: 'com.atlassian.commonmark', name: 'commonmark', version:'0.9.0'
     compile group: 'com.fasterxml.jackson.module', name: 'jackson-module-kotlin', version:'2.9.0'
-
-    // grpc
-    compile "io.grpc:grpc-netty:${grpcVersion}" // -- (1)
-    compile "io.grpc:grpc-protobuf:${grpcVersion}" // -- (2)
-    compile "io.grpc:grpc-stub:${grpcVersion}" // -- (3)
-
-    // Spring
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version:'1.5.6.RELEASE'
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-security', version:'1.5.6.RELEASE'
-    compile group: 'org.springframework.security.oauth', name: 'spring-security-oauth2', version:'2.0.14.RELEASE'
-    compile 'org.lognet:grpc-spring-boot-starter:2.1.3'
-
     runtime group: 'org.springframework.boot', name: 'spring-boot-devtools', version:'1.5.6.RELEASE'
+    runtime group: 'org.postgresql', name: 'postgresql', version:'9.4.1212.jre7'
     testCompile(group: 'org.springframework.boot', name: 'spring-boot-starter-test', version:'1.5.6.RELEASE') {
 exclude(module: 'commons-logging')
     }
     testCompile group: 'org.springframework.security', name: 'spring-security-test', version:'4.2.3.RELEASE'
-}
-
-protobuf {
-    protoc {
-        artifact = 'com.google.protobuf:protoc:3.4.0'
-    }
-    plugins {
-        grpc {
-            artifact = "io.grpc:protoc-gen-grpc-java:1.7.0"
-        }
-    }
-    generateProtoTasks {
-        all().each { task ->
-            task.builtins {
-                java {
-                    outputSubDir = 'generated-proto'
-                }
-            }
-            task.plugins {
-                grpc {
-                    outputSubDir = 'generated-proto'
-                }
-            }
-        }
-    }
-    generatedFilesBaseDir = "${projectDir}/src/"
-}
-
-task generateRubyGrpcClient {
-    FileTree tree = fileTree(dir: 'src/main/proto', include: '**/*.proto')
-    tree.each { proto ->
-        exec {
-            commandLine 'grpc_tools_ruby_protoc', '-I', './src/main/proto', '--ruby_out=./client/ruby/lib/grpc', '--grpc_out=./client/ruby/lib/grpc', proto.getName()
-        }
-    }
-}
-
-clean {
-    delete "${projectDir}/src/main/generated-proto"
-}
-
-bootRepackage  {
-    executable = true
-}
-
-afterEvaluate {
-    compileKotlin.dependsOn generateProto
-    compileKotlin.dependsOn generateRubyGrpcClient
 }
