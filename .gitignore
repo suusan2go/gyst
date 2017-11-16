@@ -55,6 +55,7 @@ out/
 *.iws
 *.iml
 *.ipr
+*.iml
 
 ### NetBeans ###
 nbproject/private/
@@ -66,3 +67,4 @@ nbdist/
 
 # ideavim
 .ideavimrc
+

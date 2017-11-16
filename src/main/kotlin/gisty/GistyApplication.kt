@@ -42,7 +42,15 @@ class GistyApplication: WebSecurityConfigurerAdapter() {
         http
                 .antMatcher("/**")
                 .authorizeRequests()
-                .antMatchers("/", "/login**", "/assets**")
+                .antMatchers(
+                        "/",
+                        "/login**",
+                        "/assets**",
+                        "/swagger**",
+                        "/v2/api-docs",
+                        "/v2/swagger.json",
+                        "/swagger-resources/**"
+                )
                 .permitAll()
                 .anyRequest()
                 .authenticated()
