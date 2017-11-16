@@ -12,6 +12,14 @@ import springfox.documentation.spring.web.plugins.Docket
 import springfox.documentation.swagger2.annotations.EnableSwagger2
 
 import com.google.common.base.Predicates.*
+import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
+import org.springframework.web.cors.CorsConfiguration
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource
+import org.springframework.web.filter.CorsFilter
+import org.springframework.web.servlet.config.annotation.CorsRegistry
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
+
 
 @Configuration
 @EnableSwagger2

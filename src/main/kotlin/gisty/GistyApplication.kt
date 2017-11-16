@@ -48,6 +48,7 @@ class GistyApplication: WebSecurityConfigurerAdapter() {
                         "/assets**",
                         "/swagger**",
                         "/v2/api-docs",
+                        "/v2/swagger.json",
                         "/swagger-resources/**"
                 )
                 .permitAll()
