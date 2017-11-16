@@ -111,7 +111,7 @@ task generateRubyGrpcClient {
     FileTree tree = fileTree(dir: 'src/main/proto', include: '**/*.proto')
     tree.each { proto ->
         exec {
-            commandLine 'grpc_tools_ruby_protoc', '-I', './src/main/proto', '--ruby_out=./client/ruby/lib/', '--grpc_out=./client/ruby/lib/', proto.getName()
+            commandLine 'grpc_tools_ruby_protoc', '-I', './src/main/proto', '--ruby_out=./client/ruby/lib/grpc', '--grpc_out=./client/ruby/lib/grpc', proto.getName()
         }
     }
 }
