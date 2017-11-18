@@ -196,6 +196,8 @@ export const DocumentsControllerApiFetchParamCreator = function (configuration?:
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
 
+            localVarRequestOptions.credentials = 'same-origin'
+
             return {
                 url: url.format(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -233,6 +235,8 @@ export const DocumentsControllerApiFetchParamCreator = function (configuration?:
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            localVarRequestOptions.credentials = 'same-origin'
 
             return {
                 url: url.format(localVarUrlObj),
@@ -279,6 +283,8 @@ export const DocumentsControllerApiFetchParamCreator = function (configuration?:
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             localVarRequestOptions.body = JSON.stringify(form || {});
+
+            localVarRequestOptions.credentials = 'same-origin'
 
             return {
                 url: url.format(localVarUrlObj),
@@ -331,6 +337,8 @@ export const DocumentsControllerApiFetchParamCreator = function (configuration?:
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
             localVarRequestOptions.body = JSON.stringify(form || {});
+
+            localVarRequestOptions.credentials = 'same-origin'
 
             return {
                 url: url.format(localVarUrlObj),
@@ -606,6 +614,8 @@ export const UserControllerApiFetchParamCreator = function (configuration?: Conf
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
 
+            localVarRequestOptions.credentials = 'same-origin'
+
             return {
                 url: url.format(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -643,6 +653,8 @@ export const UserControllerApiFetchParamCreator = function (configuration?: Conf
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            localVarRequestOptions.credentials = 'same-origin'
 
             return {
                 url: url.format(localVarUrlObj),
@@ -682,6 +694,8 @@ export const UserControllerApiFetchParamCreator = function (configuration?: Conf
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
 
+            localVarRequestOptions.credentials = 'same-origin'
+
             return {
                 url: url.format(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -719,6 +733,8 @@ export const UserControllerApiFetchParamCreator = function (configuration?: Conf
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            localVarRequestOptions.credentials = 'same-origin'
 
             return {
                 url: url.format(localVarUrlObj),
@@ -758,6 +774,8 @@ export const UserControllerApiFetchParamCreator = function (configuration?: Conf
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
 
+            localVarRequestOptions.credentials = 'same-origin'
+
             return {
                 url: url.format(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -796,6 +814,8 @@ export const UserControllerApiFetchParamCreator = function (configuration?: Conf
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
 
+            localVarRequestOptions.credentials = 'same-origin'
+
             return {
                 url: url.format(localVarUrlObj),
                 options: localVarRequestOptions,
@@ -833,6 +853,8 @@ export const UserControllerApiFetchParamCreator = function (configuration?: Conf
             // fix override query string Detail: https://stackoverflow.com/a/7517673/1077943
             delete localVarUrlObj.search;
             localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers);
+
+            localVarRequestOptions.credentials = 'same-origin'
 
             return {
                 url: url.format(localVarUrlObj),
