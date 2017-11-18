@@ -226,6 +226,8 @@ export const {{classname}}FetchParamCreator = function (configuration?: Configur
             localVarRequestOptions.body = JSON.stringify({{paramName}} || {});
     {{/bodyParam}}
 
+            localVarRequestOptions.credentials = 'same-origin'
+
             return {
                 url: url.format(localVarUrlObj),
                 options: localVarRequestOptions,
