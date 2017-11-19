@@ -14,7 +14,7 @@ data class DocumentView(
                 document.id.value,
                 document.title.value,
                 document.body.value,
-                document.body.html()
+                document.bodyHtml()
             )
         }
     }

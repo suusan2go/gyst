@@ -15,7 +15,9 @@ data class Document(
         val body: DocumentBody,
         val updatedDatetime: DateTime,
         val createdDateTime: DateTime
-)
+) {
+    fun bodyHtml(): String = body.html()
+}
 
 interface DocumentId { val value: Int }
 data class DefinedDocumentId(override val value: Int): PersistedIdentifier<Int>(value), DocumentId
