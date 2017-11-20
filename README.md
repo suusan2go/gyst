@@ -1,6 +1,10 @@
 # Gyst
 A Gist like application.
 
+## Technology Stack
+* Spring Boot
+* Vue.js
+
 # Development
 
 ## Set Environment Variables
