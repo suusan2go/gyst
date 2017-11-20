@@ -3,7 +3,7 @@ A Gist like application.
 
 # Development
 
-## Set Environment
+## Set Environment Variables
 ```bash
 export GOOGLE_CLIENT_ID=<YOUR ID>
 export GOOGLE_CLIENT_SECRET=<YOUR SECRETE>
