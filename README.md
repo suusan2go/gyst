@@ -2,6 +2,14 @@
 A Gist like application.
 
 # Development
+
+## Set Environment
+```bash
+export GOOGLE_CLIENT_ID=<YOUR ID>
+export GOOGLE_CLIENT_SECRET=<YOUR SECRETE>
+```
+
+## Run Application
 ```bash
 docker-compose up -d
 
