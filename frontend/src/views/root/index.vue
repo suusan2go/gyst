@@ -4,7 +4,7 @@
       <el-card class="box-card">
         <div slot="header" class="clearfix header-logo">
           <icon name="file-text-o" scale="1.5" color="black"></icon>
-          Gisty
+          Gyst
         </div>
         <div class="login-button-group">
           <a href="/login/google">

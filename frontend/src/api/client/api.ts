@@ -176,7 +176,7 @@ export const DocumentsControllerApiFetchParamCreator = function (configuration?:
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
-            const localVarHeaderParameter = {} as any;
+            const localVarHeaderParameter = { "X-XSRF-TOKEN": configuration && configuration.csrfToken } as any;
             const localVarQueryParameter = {} as any;
 
             if (nameValue !== undefined) {
@@ -216,7 +216,7 @@ export const DocumentsControllerApiFetchParamCreator = function (configuration?:
             const localVarPath = `/api/documents`;
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
-            const localVarHeaderParameter = {} as any;
+            const localVarHeaderParameter = { "X-XSRF-TOKEN": configuration && configuration.csrfToken } as any;
             const localVarQueryParameter = {} as any;
 
             if (nameValue !== undefined) {
@@ -261,7 +261,7 @@ export const DocumentsControllerApiFetchParamCreator = function (configuration?:
             const localVarPath = `/api/documents`;
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = {} as any;
+            const localVarHeaderParameter = { "X-XSRF-TOKEN": configuration && configuration.csrfToken } as any;
             const localVarQueryParameter = {} as any;
 
             if (nameValue !== undefined) {
@@ -315,7 +315,7 @@ export const DocumentsControllerApiFetchParamCreator = function (configuration?:
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'PATCH' }, options);
-            const localVarHeaderParameter = {} as any;
+            const localVarHeaderParameter = { "X-XSRF-TOKEN": configuration && configuration.csrfToken } as any;
             const localVarQueryParameter = {} as any;
 
             if (nameValue !== undefined) {
@@ -594,7 +594,7 @@ export const UserControllerApiFetchParamCreator = function (configuration?: Conf
             const localVarPath = `/api/user`;
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'DELETE' }, options);
-            const localVarHeaderParameter = {} as any;
+            const localVarHeaderParameter = { "X-XSRF-TOKEN": configuration && configuration.csrfToken } as any;
             const localVarQueryParameter = {} as any;
 
             if (nameValue !== undefined) {
@@ -634,7 +634,7 @@ export const UserControllerApiFetchParamCreator = function (configuration?: Conf
             const localVarPath = `/api/user`;
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'GET' }, options);
-            const localVarHeaderParameter = {} as any;
+            const localVarHeaderParameter = { "X-XSRF-TOKEN": configuration && configuration.csrfToken } as any;
             const localVarQueryParameter = {} as any;
 
             if (nameValue !== undefined) {
@@ -674,7 +674,7 @@ export const UserControllerApiFetchParamCreator = function (configuration?: Conf
             const localVarPath = `/api/user`;
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'HEAD' }, options);
-            const localVarHeaderParameter = {} as any;
+            const localVarHeaderParameter = { "X-XSRF-TOKEN": configuration && configuration.csrfToken } as any;
             const localVarQueryParameter = {} as any;
 
             if (nameValue !== undefined) {
@@ -714,7 +714,7 @@ export const UserControllerApiFetchParamCreator = function (configuration?: Conf
             const localVarPath = `/api/user`;
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'OPTIONS' }, options);
-            const localVarHeaderParameter = {} as any;
+            const localVarHeaderParameter = { "X-XSRF-TOKEN": configuration && configuration.csrfToken } as any;
             const localVarQueryParameter = {} as any;
 
             if (nameValue !== undefined) {
@@ -754,7 +754,7 @@ export const UserControllerApiFetchParamCreator = function (configuration?: Conf
             const localVarPath = `/api/user`;
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'PATCH' }, options);
-            const localVarHeaderParameter = {} as any;
+            const localVarHeaderParameter = { "X-XSRF-TOKEN": configuration && configuration.csrfToken } as any;
             const localVarQueryParameter = {} as any;
 
             if (nameValue !== undefined) {
@@ -794,7 +794,7 @@ export const UserControllerApiFetchParamCreator = function (configuration?: Conf
             const localVarPath = `/api/user`;
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'POST' }, options);
-            const localVarHeaderParameter = {} as any;
+            const localVarHeaderParameter = { "X-XSRF-TOKEN": configuration && configuration.csrfToken } as any;
             const localVarQueryParameter = {} as any;
 
             if (nameValue !== undefined) {
@@ -834,7 +834,7 @@ export const UserControllerApiFetchParamCreator = function (configuration?: Conf
             const localVarPath = `/api/user`;
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: 'PUT' }, options);
-            const localVarHeaderParameter = {} as any;
+            const localVarHeaderParameter = { "X-XSRF-TOKEN": configuration && configuration.csrfToken } as any;
             const localVarQueryParameter = {} as any;
 
             if (nameValue !== undefined) {

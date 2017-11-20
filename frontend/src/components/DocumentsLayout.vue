@@ -3,7 +3,7 @@
     <header class="header">
       <router-link :to="{ name: 'DocumentsIndex' }" class="header-logo">
         <icon name="file-text" scale="1.5" color=""></icon>
-        Gisty
+        Gyst
       </router-link>
       <el-menu theme="light" :default-active="activeIndex" router="true" mode="horizontal" @select="handleSelect">
         <el-menu-item>

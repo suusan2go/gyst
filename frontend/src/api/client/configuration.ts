@@ -18,6 +18,7 @@ export interface ConfigurationParameters {
     password?: string;
     accessToken?: string | ((name: string, scopes?: string[]) => string);
     basePath?: string;
+    csrfToken?: string;
 }
 
 export class Configuration {
@@ -55,6 +56,13 @@ export class Configuration {
      * @memberof Configuration
      */
     basePath?: string;
+    /**
+     * csrfToken
+     *
+     * @type {string}
+     * @memberof Configuration
+     */
+    csrfToken?: string
 
     constructor(param: ConfigurationParameters = {}) {
         this.apiKey = param.apiKey;
@@ -62,5 +70,6 @@ export class Configuration {
         this.password = param.password;
         this.accessToken = param.accessToken;
         this.basePath = param.basePath;
+        this.csrfToken = param.csrfToken;
     }
 }
