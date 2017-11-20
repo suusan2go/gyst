@@ -103,7 +103,7 @@ export const {{classname}}FetchParamCreator = function (configuration?: Configur
                 .replace(`{${"{{baseName}}"}}`, encodeURIComponent(String({{paramName}}))){{/pathParams}};
             const localVarUrlObj = url.parse(localVarPath, true);
             const localVarRequestOptions = Object.assign({ method: '{{httpMethod}}' }, options);
-            const localVarHeaderParameter = {} as any;
+            const localVarHeaderParameter = { "X-XSRF-TOKEN": configuration && configuration.csrfToken } as any;
             const localVarQueryParameter = {} as any;
     {{#hasFormParams}}
             const localVarFormParams = new url.URLSearchParams();
